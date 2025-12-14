@@ -51,6 +51,9 @@
   --color-dark-300: #141625; /** 12 */
   --color-dark-400: #0c0e16; /** 08 */
 
+  /* Sidebar */
+  --color-border-sidebar: #494e6e;
+
   /* Primary */
   --color-purple: var(--color-purple-200);
   --color-purple-light: var(--color-purple-100);
