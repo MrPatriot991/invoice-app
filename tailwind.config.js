@@ -14,11 +14,9 @@ export default {
         table: "var(--bg-table-header)",
 
         // Text colors
-        text: {
-          primary: "var(--text-primary)",
-          secondary: "var(--text-secondary)",
-          tertiary: "var(--text-tertiary)",
-        },
+        primary: "var(--text-primary)",
+        secondary: "var(--text-secondary)",
+        tertiary: "var(--text-tertiary)",
 
         // Primari
         purple: "var(--color-purple)",

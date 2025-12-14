@@ -1,10 +1,11 @@
+import { InvoiceCard } from "@/features/invoices/components/lists";
 import { MainLayout } from "../components/layout";
 
 function App() {
   return (
     <MainLayout>
-      <div>
-        <h1>Invoice app</h1>
+      <div className="container mx-auto mt-10">
+        <InvoiceCard />
       </div>
     </MainLayout>
   );
