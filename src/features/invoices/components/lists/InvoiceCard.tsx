@@ -2,7 +2,7 @@ import { StatusBadge } from "@/components/common/statusBadge";
 
 const InvoiceCard = () => {
   return (
-    <article className="grid cursor-pointer grid-cols-2 items-center justify-between gap-4 rounded-lg bg-container p-6 shadow-sm [grid-template-areas:'id_client'_'due_status'_'total_status'] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl md:gap-7 md:py-4 md:[grid-template-areas:'id_due_client_total_status_arrow'] md:[grid-template-columns:auto_auto_1fr_auto_auto_auto]">
+    <article className="grid cursor-pointer grid-cols-2 items-center justify-between gap-4 rounded-lg bg-container p-6 shadow-sm transition duration-300 [grid-template-areas:'id_client'_'due_status'_'total_status'] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl md:gap-7 md:py-4 md:[grid-template-areas:'id_due_client_total_status_arrow'] md:[grid-template-columns:auto_auto_1fr_auto_auto_auto]">
       <h3 className="heading-s-variant text-primary [grid-area:id]">
         <span className="text-[var(--color-gray-500)]">#RX3080</span>
       </h3>

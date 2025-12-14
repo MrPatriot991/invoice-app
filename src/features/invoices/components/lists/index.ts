@@ -1,3 +1,4 @@
+import InvoiceHeader from "./InvoiceHeader";
 import InvoiceCard from "./InvoiceCard";
 
-export { InvoiceCard };
+export { InvoiceCard, InvoiceHeader };

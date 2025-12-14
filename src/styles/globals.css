@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "./tokens.css";
+@import "./typography.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,7 +15,7 @@
   body {
     font-family: var(--font-leagu);
     font-size: var(--fs-15);
-    line-height: var(--lh-16);
+    line-height: var(--lh-15);
     letter-spacing: var(--ls);
     background-color: var(--bg-main);
     -webkit-font-smoothing: antialiased;
