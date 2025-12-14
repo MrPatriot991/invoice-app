@@ -16,7 +16,7 @@
   --lh-33: 33px;
 
   /* Letter Spacing */
-  --ls: 0.25px
+  --ls: 0.25px;
 
   /* Font weight */
   --fw-500: 500;
@@ -66,6 +66,10 @@
   --color-draft: var(--color-gray-600);
   --color-draft-btn-hover: var(--color-dark-400);
 
+  /* StatusBadge */
+  --text-badge-bg: var(--color-gray-600);
+  --color-badge-bg: rgba(var(--color-draft-bg), 0.1);
+
   /* Backgrounds */
   --bg-main: var(--color-gray-100);
   --bg-container: var(--color-white);
@@ -89,6 +93,10 @@
   /* Draft */
   --color-draft: var(--color-dark-100);
   --color-draft-btn-hover: var(--color-dark-100);
+
+  /* StatusBadge */
+  --text-badge-bg: var(--color-gray-300);
+  --color-badge-bg: rgba(var(--color-draft-bg), 0.3);
 
   /* Backgrounds */
   --bg-main: var(--color-dark-300);

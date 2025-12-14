@@ -1,7 +1,7 @@
 /**
  * Defines the business status of an invoice within the application.
  */
-export type InvoiceStatus = "all" | "paid" | "pending" | "draft";
+export type InvoiceStatus = "Paid" | "Pending" | "Draft";
 
 /**
  * Represents a single item within an invoice, including price and quantity.
