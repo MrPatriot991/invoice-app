@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 
@@ -17,10 +17,11 @@ const InvoiceHeader = () => {
         </p>
       </div>
       <div className="flex items-center gap-4 md:gap-10">
-        <button className="flex items-center gap-3">
+        <button className="flex items-center gap-1 sm:gap-3 lg:gap-3">
           <span className="heading-s-variant text-primary inline-block">
-            Filter <span className="hidden md:inline-block"> by status</span>
+            Filter <span className="hidden sm:inline-block"> by status</span>
           </span>
+          <ChevronDown className="h-4 w-4 text-purple md:h-5 md:w-5" />
         </button>
         <Button variant="purple">
           <div className="rounded-full bg-white p-2">
