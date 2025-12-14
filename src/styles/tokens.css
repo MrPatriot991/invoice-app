@@ -79,6 +79,10 @@
   --text-primary: var(--color-dark-400);
   --text-secondary: var(--color-gray-500); /** 07 */
   --text-tertiary: var(--color-gray-400); /** №6 */
+
+  /* Dropdown */
+  --color-dropdown-bg: var(--color-white);
+  --color-checkbox-bg: var(--color-gray-300);
 }
 
 .dark {
@@ -107,4 +111,8 @@
   --text-primary: var(--color-white);
   --text-secondary: var(--color-gray-300); /** 05 */
   --text-tertiary: var(--color-gray-300); /** №5 */
+
+  /* Dropdown */
+  --color-dropdown-bg: var(--color-dark-200);
+  --color-checkbox-bg: var(--color-dark-100);
 }

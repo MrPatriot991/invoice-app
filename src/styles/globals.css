@@ -24,4 +24,8 @@
 
     @apply bg-main transition-colors duration-300;
   }
+
+  main {
+    scrollbar-gutter: stable;
+  }
 }
