@@ -1,0 +1,99 @@
+:root {
+  /* Family */
+  --font-league: "Roboto", sans-serif;
+
+  /* Font sizes */
+  --fs-13: 13px;
+  --fs-15: 15px;
+  --fs-24: 24px;
+  --fs-36: 36px;
+
+  /* Line heights */
+  --lh-16: 16px;
+  --lh-18: 18px;
+  --lh-22: 22px;
+  --lh-24: 24px;
+  --lh-33: 33px;
+
+  /* Letter Spacing */
+  --ls: 0.25px
+
+  /* Font weight */
+  --fw-500: 500;
+  --fw-700: 700;
+
+  /* Base palette */
+  --color-white: #ffffff; /** 00 */
+
+  --color-purple-100: #9277ff; /** 02 */
+  --color-purple-200: #7c5dfa; /** 01 */
+
+  --color-gray-100: #f8f8fb; /** 11 */
+  --color-gray-200: #f9fafe; /** -- */
+  --color-gray-300: #dfe3fa; /** 05 */
+  --color-gray-400: #888eb0; /** 06 */
+  --color-gray-500: #7e88c3; /** 07 */
+  --color-gray-600: #373b53; /** -- */
+  --color-gray-700: #292c44;
+
+  --color-danger-100: #ff9797;
+  --color-danger-200: #ec5757;
+
+  --color-green: #33d69f;
+  --color-orange: #ff8f00;
+
+  --color-green-bg: rgba(51, 214, 159, 0.1);
+  --color-orange-bg: rgba(255, 143, 0, 0.1);
+  --color-draft-bg: 55, 59, 83;
+
+  --color-dark-100: #1e2139; /** 03 */
+  --color-dark-200: #252945; /** 04 */
+  --color-dark-300: #141625; /** 12 */
+  --color-dark-400: #0c0e16; /** 08 */
+
+  /* Primary */
+  --color-purple: var(--color-purple-200);
+  --color-purple-light: var(--color-purple-100);
+
+  /* Secondary */
+  --color-secondary: var(--color-gray-200);
+  --color-secondary-btn-hover: var(--color-gray-300);
+
+  /* Draft */
+  --color-draft: var(--color-gray-600);
+  --color-draft-btn-hover: var(--color-dark-400);
+
+  /* Backgrounds */
+  --bg-main: var(--color-gray-100);
+  --bg-container: var(--color-white);
+  --bg-table-header: var(--color-gray-200);
+
+  /* Text */
+  --text-primary: var(--color-dark-400);
+  --text-secondary: var(--color-gray-500); /** 07 */
+  --text-tertiary: var(--color-gray-400); /** №6 */
+}
+
+.dark {
+  /* Primary stays same */
+  --color-purple: var(--color-purple-200);
+  --color-purple-light: var(--color-purple-100);
+
+  /* Secondary */
+  --color-secondary: var(--color-dark-200);
+  --color-secondary-btn-hover: var(--color-white);
+
+  /* Draft */
+  --color-draft: var(--color-dark-100);
+  --color-draft-btn-hover: var(--color-dark-100);
+
+  /* Backgrounds */
+  --bg-main: var(--color-dark-300);
+  --bg-container: var(--color-dark-100); /** №3 */
+  --bg-table-header: var(--color-dark-200);
+
+  /* Text */
+  --text-primary: var(--color-white);
+  --text-secondary: var(--color-gray-300); /** 05 */
+  --text-tertiary: var(--color-gray-300); /** №5 */
+}
