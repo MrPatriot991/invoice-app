@@ -36,7 +36,7 @@
     font-family: var(--font-league);
     font-weight: var(--fw-700);
     font-size: var(--fs-15);
-    line-height: var(--lh-16);
+    line-height: var(--lh-15);
   }
 
   /* Body | 13px | 18px  */
@@ -52,6 +52,6 @@
     font-family: var(--font-league);
     font-weight: var(--fw-500);
     font-size: var(--fs-13);
-    line-height: var(--lh-16);
+    line-height: var(--lh-15);
   }
 }

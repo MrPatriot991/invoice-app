@@ -1,5 +1,4 @@
 import clsx from "clsx";
-
 import { ChevronDown } from "lucide-react";
 
 interface GoBackButtonProps {
@@ -18,7 +17,7 @@ export const GoBackButton = ({
   const wrapperClasses = clsx({ "mb-8": !isModal }, wrapperClassName);
 
   const buttonClasses = clsx(
-    "heading-s-variant flex items-center gap-6 py-1 text-primary transition-colors duration-300 hover:text-text-secondary",
+    "heading-s-variant flex items-center gap-6 py-1 text-primary transition-colors duration-300 hover:text-secondary",
     className,
   );
 

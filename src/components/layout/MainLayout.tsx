@@ -7,7 +7,7 @@ const MainLayout = () => {
     <div className="flex h-dvh flex-col bg-main transition-colors duration-300 lg:flex-row">
       <Sidebar />
 
-      <main className="flex-1 overflow-y-auto scroll-smooth px-6 sm:px-12 lg:px-20">
+      <main className="flex-1 overflow-y-auto scroll-smooth px-6 sm:px-8 md:px-12 lg:px-20">
         <Outlet />
       </main>
     </div>

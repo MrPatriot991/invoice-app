@@ -21,14 +21,14 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyle =
-    "px-4 sm:px-5 py-3 rounded-full flex items-center gap-2 md:gap-4 heading-s-variant transition-colors duration-300";
+    "px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center gap-2 md:gap-4 heading-s-variant transition-colors duration-300";
 
   const variantStyle = {
     purple:
       "bg-[var(--color-purple)] text-white hover:bg-[var(--color-purple-light)] disabled:bg-[var(--color-purple-light)]",
     dark: "bg-[var(--color-gray-600)] text-[var(--text-tertiary)] hover:bg-[var(--color-draft-btn-hover)]",
     secondary:
-      "bg-[var(--color-secondary)] text-text-tertiary hover:bg-[var(--color-secondary-btn-hover)]",
+      "bg-[var(--color-secondary)] text-tertiary hover:bg-[var(--color-secondary-btn-hover)]",
     danger:
       "bg-[var(--color-danger-200)] text-white hover:bg-[var(--color-danger-100)] disabled:bg-[var(--color-danger-100)]",
   };
