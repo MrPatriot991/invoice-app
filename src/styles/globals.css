@@ -22,7 +22,7 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-y: auto;
 
-    @apply bg-main transition-colors duration-300;
+    @apply bg-main;
   }
 
   main {

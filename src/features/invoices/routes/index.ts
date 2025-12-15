@@ -1,4 +1,4 @@
 import InvoicesRoute from "./InvoicesRoute";
-import DetailsRoute from "./DetailsRoute";
+import InvoiceDetailsRoute from "./InvoiceDetailsRoute";
 
-export { InvoicesRoute, DetailsRoute };
+export { InvoicesRoute, InvoiceDetailsRoute };
