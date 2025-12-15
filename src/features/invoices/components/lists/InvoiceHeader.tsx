@@ -17,7 +17,7 @@ const InvoiceHeader = ({ filter, setFilter }: InvoiceHeaderProp) => {
         <h1 className="heading-m md:heading-l text-primary transition-colors duration-300">
           Invoices
         </h1>
-        <p className="body-variant text-tertiary hidden transition-colors duration-300 md:block">
+        <p className="body-variant hidden text-tertiary transition-colors duration-300 md:block">
           There are<span> 7 </span>total invoices
         </p>
         <p className="body-variant text-tertiary transition-colors duration-300 md:hidden">

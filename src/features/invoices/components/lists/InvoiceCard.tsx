@@ -33,17 +33,19 @@ const InvoiceCard = ({ invoice }: InvoiceCardProps) => {
 
   return (
     <article className={cardClass}>
-      <h3 className="heading-s-variant text-primary [grid-area:id]">
+      <h3 className="heading-s-variant text-primary transition-colors duration-300 [grid-area:id]">
         <span className="text-[var(--color-gray-500)]">#</span>
         {id}
       </h3>
-      <p className="body text-secondary col-start-1 [grid-area:due]">
+      <p className="body col-start-1 text-secondary transition-colors duration-300 [grid-area:due]">
         {paymentDue}
       </p>
-      <p className="body text-secondary justify-self-end [grid-area:client] md:justify-self-start">
+      <p className="body justify-self-end text-secondary transition-colors duration-300 [grid-area:client] md:justify-self-start">
         {clientName}
       </p>
-      <p className="heading-s text-primary [grid-area:total]">£ {total}</p>
+      <p className="heading-s text-primary transition-colors duration-300 [grid-area:total]">
+        £ {total}
+      </p>
       <div className="grid grid-cols-1 items-center gap-6 justify-self-end [grid-area:status] md:grid-cols-[3fr_auto] md:justify-self-start">
         <StatusBadge status={status} />
         <div className="hidden md:inline-block">

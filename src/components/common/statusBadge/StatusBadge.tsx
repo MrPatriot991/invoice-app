@@ -9,7 +9,7 @@ interface StatusProps {
 
 const StatusBadge = ({ status, className }: StatusProps) => {
   const baseStyle =
-    "w-[104px] flex gap-1 items-center heading-s-variant justify-center rounded-md px-[18px] py-3";
+    "w-[104px] flex gap-1 items-center heading-s-variant justify-center rounded-md px-[18px] py-3 transition-colors duration-300";
 
   const statusStyle = {
     Paid: {
@@ -32,9 +32,19 @@ const StatusBadge = ({ status, className }: StatusProps) => {
   return (
     <div className={clsx(baseStyle, statusStyle.bg, className)}>
       <span
-        className={clsx(statusStyle.dot, "inline-block h-2 w-2 rounded-full")}
+        className={clsx(
+          statusStyle.dot,
+          "inline-block h-2 w-2 rounded-full transition-colors duration-300",
+        )}
       />
-      <span className={clsx(statusStyle.text, "inline-block")}>{status}</span>
+      <span
+        className={clsx(
+          statusStyle.text,
+          "inline-block transition-colors duration-300",
+        )}
+      >
+        {status}
+      </span>
     </div>
   );
 };

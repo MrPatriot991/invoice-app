@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,23 @@
     <title>invoice-app</title>
   </head>
   <body>
+    <script>
+      // Prevents FOUC (Flash of Unstyled Content) when loading a dark theme.
+      // This script must run before the main React application loads.
+      const saved = localStorage.getItem("theme");
+
+      if (
+        // Check if the user has explicitly saved a preference for dark mode
+        saved === "dark" ||
+        // Or if no preference is saved AND the system prefers dark mode
+        (!saved && window.matchMedia("(prefers-colorscheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     <div id="root"></div>
-    <script type="module" src="/src/app/main.tsx"></script>
+    <script defer type="module" src="/src/app/main.tsx"></script>
   </body>
 </html>
