@@ -1,7 +1,9 @@
-import clsx from "clsx";
+import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
+import clsx from "clsx";
 
 import { StatusBadge } from "@/components/common/statusBadge";
+
 import type { Invoice } from "@/features/invoices/types";
 
 interface InvoiceCardProps {
@@ -32,27 +34,29 @@ const InvoiceCard = ({ invoice }: InvoiceCardProps) => {
   );
 
   return (
-    <article className={cardClass}>
-      <h3 className="heading-s-variant text-primary transition-colors duration-300 [grid-area:id]">
-        <span className="text-[var(--color-gray-500)]">#</span>
-        {id}
-      </h3>
-      <p className="body col-start-1 text-secondary transition-colors duration-300 [grid-area:due]">
-        {paymentDue}
-      </p>
-      <p className="body justify-self-end text-secondary transition-colors duration-300 [grid-area:client] md:justify-self-start">
-        {clientName}
-      </p>
-      <p className="heading-s text-primary transition-colors duration-300 [grid-area:total]">
-        £ {total}
-      </p>
-      <div className="grid grid-cols-1 items-center gap-6 justify-self-end [grid-area:status] md:grid-cols-[3fr_auto] md:justify-self-start">
-        <StatusBadge status={status} />
-        <div className="hidden md:inline-block">
-          <ChevronDown className="h-5 w-5 -rotate-90 text-purple" />
+    <Link to={`/invoice/${id}`}>
+      <article className={cardClass}>
+        <h3 className="heading-s-variant text-primary transition-colors duration-300 [grid-area:id]">
+          <span className="text-[var(--color-gray-500)]">#</span>
+          {id}
+        </h3>
+        <p className="body col-start-1 text-secondary transition-colors duration-300 [grid-area:due]">
+          {paymentDue}
+        </p>
+        <p className="body justify-self-end text-secondary transition-colors duration-300 [grid-area:client] md:justify-self-start">
+          {clientName}
+        </p>
+        <p className="heading-s text-primary transition-colors duration-300 [grid-area:total]">
+          £ {total}
+        </p>
+        <div className="grid grid-cols-1 items-center gap-6 justify-self-end [grid-area:status] md:grid-cols-[3fr_auto] md:justify-self-start">
+          <StatusBadge status={status} />
+          <div className="hidden md:inline-block">
+            <ChevronDown className="h-5 w-5 -rotate-90 text-purple" />
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 };
 
