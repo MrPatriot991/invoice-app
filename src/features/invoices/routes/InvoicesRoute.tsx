@@ -1,10 +1,12 @@
+import { useState } from "react";
+
 import {
   InvoiceHeader,
   InvoiceList,
+  InvoiceEmpty,
 } from "@/features/invoices/components/lists";
 
 import { invoices } from "@/features/invoices/lib/utils/mockData";
-import { useState } from "react";
 
 import type { InvoiceStatus } from "../types";
 
@@ -18,7 +20,13 @@ const InvoicesRoute = () => {
   return (
     <div className="container mx-auto py-8 md:py-14 lg:py-20">
       <InvoiceHeader filter={filter} setFilter={setFilter} />
-      <InvoiceList invoices={invoiceFiltered} />
+      {invoiceFiltered.length > 0 ? (
+        <InvoiceList invoices={invoiceFiltered} />
+      ) : (
+        <div className="flex min-h-[60vh] items-center justify-center px-4 py-8 sm:min-h-[50vh] lg:sm:min-h-[60vh]">
+          <InvoiceEmpty />
+        </div>
+      )}
     </div>
   );
 };
