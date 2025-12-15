@@ -9,7 +9,7 @@ const MainLayout = ({ children }: MainProps) => {
     <div className="flex h-dvh flex-col lg:flex-row">
       <Sidebar />
 
-      <main className="flex-1 overflow-auto px-6 sm:px-12 lg:px-20">
+      <main className="flex-1 overflow-y-auto scroll-smooth px-6 sm:px-12 lg:px-20">
         {children}
       </main>
     </div>
