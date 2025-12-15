@@ -1,12 +1,9 @@
-import { MainLayout } from "@/components/layout";
-import { InvoicesRoute } from "@/features/invoices/routes";
+import { RouterProvider } from "react-router-dom";
+
+import { router } from "./routes";
 
 function App() {
-  return (
-    <MainLayout>
-      <InvoicesRoute />
-    </MainLayout>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
