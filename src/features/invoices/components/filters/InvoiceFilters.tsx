@@ -104,7 +104,7 @@ const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
         className="flex items-center gap-3 p-2"
         onClick={toggleDropdown}
       >
-        <span className="heading-s-variant text-primary inline-block transition-colors duration-300">
+        <span className="heading-s-variant inline-block text-primary transition-colors duration-300">
           Filter <span className="hidden md:inline-block"> by status</span>
         </span>
         <ChevronDown
@@ -122,7 +122,7 @@ const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
           "absolute z-50 mt-4 origin-top overflow-y-auto rounded-lg p-3 shadow-lg transition duration-300",
           "bg-[var(--color-dropdown-bg)]",
           isOpen
-            ? "visible translate-y-0 scale-100 opacity-100"
+            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
             : "pointer-events-none -translate-y-2 scale-95 opacity-0",
         )}
       >
@@ -130,17 +130,19 @@ const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
           const isChecked = filter === option.id;
 
           return (
-            <div tabIndex={0} key={option.id} role="option">
-              <Checkbox
-                id={option.id}
-                label={option.label}
-                checked={isChecked}
-                classNames={{
-                  labelSpan:
-                    "heading-s-variant text-[var(--text-primary)] transition-colors duration-300",
-                }}
-                onChange={() => handleFilterChange(option.id)}
-              />
+            <div tabIndex={isOpen ? 0 : -1} key={option.id} role="option">
+              {isOpen && (
+                <Checkbox
+                  id={option.id}
+                  label={option.label}
+                  checked={isChecked}
+                  classNames={{
+                    labelSpan:
+                      "heading-s-variant text-[var(--text-primary)] transition-colors duration-300",
+                  }}
+                  onChange={() => handleFilterChange(option.id)}
+                />
+              )}
             </div>
           );
         })}
