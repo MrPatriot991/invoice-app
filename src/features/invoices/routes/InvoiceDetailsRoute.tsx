@@ -1,7 +1,16 @@
+import { GoBackButton } from "@/components/ui/GoBackButton";
+import { useNavigate } from "react-router-dom";
+
 const DetailsRoute = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <div>
-      <h2>Details View</h2>
+    <div className="container mx-auto py-8 md:py-12 lg:py-16">
+      <GoBackButton onClick={handleGoBack} />
     </div>
   );
 };
