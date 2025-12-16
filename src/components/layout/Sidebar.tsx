@@ -23,13 +23,13 @@ const Sidebar = () => {
           <MoonIcon
             className={clsx(
               "h-6 w-6 fill-current text-[var(--color-gray-500)] transition-opacity duration-300",
-              theme === "dark" ? "opacity-100" : "opacity-0",
+              theme === "light" ? "opacity-100" : "opacity-0",
             )}
           />
           <SunIcon
             className={clsx(
               "absolute h-6 w-6 fill-current text-yellow-400 transition-opacity duration-300",
-              theme === "light" ? "opacity-100" : "opacity-0",
+              theme === "dark" ? "opacity-100" : "opacity-0",
             )}
           />
         </button>
