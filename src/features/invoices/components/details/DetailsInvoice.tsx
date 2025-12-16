@@ -1,5 +1,6 @@
 import { BillFormSection } from "./sections/BillFormSection";
 import { BillToSection } from "./sections/BillToSection";
+import { ItemsInfo } from "./sections/ItemsInfo";
 
 import type { Invoice } from "@/features/invoices/types";
 
@@ -17,6 +18,8 @@ const DetailsInvoice = ({ invoice }: DetailsInvoiceProps) => {
     clientName,
     clientAddress,
     clientEmail,
+    items,
+    total,
   } = invoice;
 
   return (
@@ -33,6 +36,7 @@ const DetailsInvoice = ({ invoice }: DetailsInvoiceProps) => {
         clientAddress={clientAddress}
         clientEmail={clientEmail}
       />
+      <ItemsInfo items={items} total={total} />
     </div>
   );
 };

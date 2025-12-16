@@ -83,6 +83,9 @@
   /* Dropdown */
   --color-dropdown-bg: var(--color-white);
   --color-checkbox-bg: var(--color-gray-300);
+
+  /* Details */
+  --color-total-bg: var(--color-gray-600);
 }
 
 .dark {
@@ -115,4 +118,7 @@
   /* Dropdown */
   --color-dropdown-bg: var(--color-dark-200);
   --color-checkbox-bg: var(--color-dark-100);
+
+  /* Details */
+  --color-total-bg: var(--color-dark-400);
 }
