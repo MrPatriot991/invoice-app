@@ -6,6 +6,7 @@ import { DetailsInvoice } from "@/features/invoices/components/details";
 import {
   DetailsHeader,
   DetailsMobileFotter,
+  DeleteInvoiceModal,
 } from "@/features/invoices/components/details";
 
 import type { ButtonVariant } from "@/components/ui/Button/Button";
@@ -21,7 +22,9 @@ export interface ActionButton {
 const InvoiceDetailsRoute = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { openModal } = useModal();
+  const { openModal, closeModal } = useModal();
+
+  if (!id) return null;
 
   const invoiceById = invoices.find((invoice) => invoice.id === id);
 
@@ -29,9 +32,15 @@ const InvoiceDetailsRoute = () => {
     navigate(-1);
   };
 
+  const handleDeleteInvoice = (id: string) => {
+    navigate("/");
+    closeModal();
+    return invoices.filter((invoice) => invoice.id !== id);
+  };
+
   const handleDeleteClick = () => {
     openModal(
-      <p className="p-20 text-center text-4xl font-bold">Delete Modal</p>,
+      <DeleteInvoiceModal id={id} onDelet={handleDeleteInvoice} />,
       "center",
     );
   };
@@ -49,7 +58,7 @@ const InvoiceDetailsRoute = () => {
   return (
     <div className="container mx-auto py-8 md:py-12 lg:py-16">
       <GoBackButton onClick={handleGoBack} />
-      <DetailsHeader buttons={actionButtons} />
+      <DetailsHeader buttons={actionButtons} status={invoiceById.status} />
       <DetailsInvoice invoice={invoiceById} />
       <DetailsMobileFotter buttons={actionButtons} />
     </div>
