@@ -22,9 +22,9 @@ const MainLayout = () => {
 
       <main
         ref={mainRef}
-        className="flex-1 overflow-y-auto scroll-smooth px-6 sm:px-8 md:px-12 lg:px-20"
+        className="flex-1 overflow-y-auto px-6 sm:px-8 md:px-12 lg:px-20"
       >
-        <Outlet />
+        <Outlet context={{ scrollContainerRef: mainRef }} />
       </main>
     </div>
   );
