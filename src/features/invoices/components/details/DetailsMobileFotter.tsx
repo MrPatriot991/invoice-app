@@ -11,7 +11,7 @@ const DetailsMobileFotter = ({ buttons }: DetailsMobileFotterProps) => {
   return (
     <div
       className={clsx(
-        "flex items-center justify-end gap-2 rounded-lg bg-container p-6",
+        "sticky bottom-0 left-0 right-0 flex items-center justify-end gap-2 rounded-lg bg-container p-6",
         "shadow-sm transition-colors duration-300 sm:hidden sm:p-8",
       )}
     >

@@ -9,7 +9,7 @@ interface DetailsHeaderProps {
 
 const DetailsHeader = ({ buttons }: DetailsHeaderProps) => {
   return (
-    <div className="flex justify-between rounded-lg bg-container p-6 shadow-sm transition-colors duration-300 sm:p-8">
+    <div className="mb-4 flex justify-between rounded-lg bg-container p-6 shadow-sm transition-colors duration-300 sm:mb-6 sm:p-8">
       <div className="flex w-full items-center justify-between gap-5 sm:w-auto sm:justify-start">
         <p className="text-secondary transition-colors duration-300">Status</p>
         <StatusBadge status="Paid" />
