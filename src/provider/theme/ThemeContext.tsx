@@ -1,5 +1,8 @@
 import { createContext } from "react";
 
+/**
+ * Defines a union type for available theme options.
+ */
 export type Theme = "dark" | "light";
 
 /**

@@ -57,9 +57,14 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
+  // The value object provided to consuming components through the context.
+  const contextValue = {
+    theme,
+    themeToggle,
+  };
+
   return (
-    // Provide the theme state and toggle function to the context
-    <ThemeContext.Provider value={{ theme, themeToggle }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );
