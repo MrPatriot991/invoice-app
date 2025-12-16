@@ -59,12 +59,12 @@ const DetailsMobileFotter = ({ buttons }: DetailsMobileFotterProps) => {
     <div
       className={clsx(
         "sticky bottom-0 left-0 right-0 flex items-center justify-end gap-2 rounded-lg bg-container p-6",
-        "z-40 shadow-sm transition duration-300 sm:hidden sm:p-8",
+        "z-10 shadow-sm transition duration-300 sm:hidden sm:p-8",
         showMobileActions ? "translate-y-0 opacity-100" : "opacity-0",
       )}
     >
-      {buttons.map(({ text, variant }) => (
-        <Button key={text} variant={variant}>
+      {buttons.map(({ text, variant, onClick }) => (
+        <Button key={text} variant={variant} onClick={onClick}>
           {text}
         </Button>
       ))}

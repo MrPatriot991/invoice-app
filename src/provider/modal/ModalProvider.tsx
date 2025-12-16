@@ -33,7 +33,6 @@ const ModalProvider = ({ children }: ModalProps) => {
    */
 
   const openModal: ModalContextType["openModal"] = (node, pos = "center") => {
-    console.log("Context Modal");
     setIsOpen(true);
     setContent(node);
     setPosition(pos);

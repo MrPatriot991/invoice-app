@@ -11,7 +11,7 @@ const Sidebar = () => {
   const { theme, themeToggle } = useTheme();
 
   return (
-    <aside className="relative flex h-[72px] w-full items-center justify-between bg-draft p-6 transition-colors duration-300 sm:h-20 lg:h-full lg:w-[103px] lg:flex-col lg:rounded-r-3xl lg:p-8">
+    <aside className="relative z-40 flex h-[72px] w-full items-center justify-between bg-draft p-6 transition-colors duration-300 sm:h-20 lg:h-full lg:w-[103px] lg:flex-col lg:rounded-r-3xl lg:p-8">
       <Logo />
       <div className="flex items-center gap-12 lg:flex-col">
         <button

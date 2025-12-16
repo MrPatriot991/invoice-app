@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 
+import { useModal } from "@/provider/modal/useModal";
 import { GoBackButton } from "@/components/ui/GoBackButton";
 import { DetailsInvoice } from "@/features/invoices/components/details";
 import {
@@ -20,6 +21,7 @@ export interface ActionButton {
 const InvoiceDetailsRoute = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { openModal } = useModal();
 
   const invoiceById = invoices.find((invoice) => invoice.id === id);
 
@@ -27,9 +29,16 @@ const InvoiceDetailsRoute = () => {
     navigate(-1);
   };
 
+  const handleDeleteClick = () => {
+    openModal(
+      <p className="p-20 text-center text-4xl font-bold">Delete Modal</p>,
+      "center",
+    );
+  };
+
   const actionButtons: ActionButton[] = [
     { text: "Edit", variant: "secondary" },
-    { text: "Delete", variant: "danger" },
+    { text: "Delete", variant: "danger", onClick: handleDeleteClick },
     { text: "Mark as Paid", variant: "purple" },
   ];
 

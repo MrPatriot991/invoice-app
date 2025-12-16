@@ -15,8 +15,8 @@ const DetailsHeader = ({ buttons }: DetailsHeaderProps) => {
         <StatusBadge status="Paid" />
       </div>
       <div className="hidden items-center gap-2 sm:flex">
-        {buttons.map(({ text, variant }) => (
-          <Button key={text} variant={variant}>
+        {buttons.map(({ text, variant, onClick }) => (
+          <Button key={text} variant={variant} onClick={onClick}>
             {text}
           </Button>
         ))}
