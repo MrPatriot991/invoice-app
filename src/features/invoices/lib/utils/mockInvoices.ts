@@ -9,7 +9,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 1,
     clientName: "Jensen Huang",
     clientEmail: "jensenh@mail.com",
-    status: "Paid",
+    status: "paid",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -40,7 +40,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 30,
     clientName: "Alex Grim",
     clientEmail: "alexgrim@mail.com",
-    status: "Pending",
+    status: "pending",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -77,7 +77,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 7,
     clientName: "John Morrison",
     clientEmail: "jm@myco.com",
-    status: "Paid",
+    status: "paid",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -108,7 +108,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 1,
     clientName: "Alysa Werner",
     clientEmail: "alysa@email.co.uk",
-    status: "Pending",
+    status: "pending",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -139,7 +139,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 7,
     clientName: "Mellisa Clarke",
     clientEmail: "mellisa.clarke@example.com",
-    status: "Pending",
+    status: "pending",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -176,7 +176,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 30,
     clientName: "Thomas Wayne",
     clientEmail: "thomas@dc.com",
-    status: "Pending",
+    status: "pending",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -207,7 +207,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 7,
     clientName: "Anita Wainwright",
     clientEmail: "",
-    status: "Draft",
+    status: "draft",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -238,7 +238,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 7,
     clientName: "Anita Wainwright",
     clientEmail: "",
-    status: "Draft",
+    status: "draft",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -269,7 +269,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 7,
     clientName: "Anita Wainwright",
     clientEmail: "",
-    status: "Draft",
+    status: "draft",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -300,7 +300,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 7,
     clientName: "Anita Wainwright",
     clientEmail: "",
-    status: "Draft",
+    status: "draft",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",
@@ -331,7 +331,7 @@ export const mockInvoices: Invoice[] = [
     paymentTerms: 7,
     clientName: "Anita Wainwright",
     clientEmail: "",
-    status: "Draft",
+    status: "draft",
     senderAddress: {
       street: "19 Union Terrace",
       city: "London",

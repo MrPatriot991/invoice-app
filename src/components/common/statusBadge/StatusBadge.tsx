@@ -12,17 +12,17 @@ const StatusBadge = ({ status, className }: StatusProps) => {
     "w-[104px] flex gap-1 items-center heading-s-variant justify-center rounded-md px-[18px] py-3 transition-colors duration-300";
 
   const statusStyle = {
-    Paid: {
+    paid: {
       bg: "bg-[var(--color-green-bg)]",
       text: "text-[var(--color-green)]",
       dot: "bg-[var(--color-green)]",
     },
-    Pending: {
+    pending: {
       bg: "bg-[var(--color-orange-bg)]",
       text: "text-[var(--color-orange)]",
       dot: "bg-[var(--color-orange)]",
     },
-    Draft: {
+    draft: {
       bg: "bg-[var(--color-badge-bg)]",
       text: "text-[var(--text-badge-bg)]",
       dot: "bg-[var(--text-badge-bg)]",
@@ -40,7 +40,7 @@ const StatusBadge = ({ status, className }: StatusProps) => {
       <span
         className={clsx(
           statusStyle.text,
-          "inline-block transition-colors duration-300",
+          "inline-block capitalize transition-colors duration-300",
         )}
       >
         {status}

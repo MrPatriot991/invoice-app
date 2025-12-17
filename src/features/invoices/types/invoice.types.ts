@@ -6,7 +6,7 @@ export type InvoiceLoadingStatus = "idle" | "loading" | "success" | "error";
 /**
  * Defines the business status of an invoice within the application.
  */
-export type InvoiceStatus = "Paid" | "Pending" | "Draft";
+export type InvoiceStatus = "paid" | "pending" | "draft";
 
 /**
  * Represents a single item within an invoice, including price and quantity.

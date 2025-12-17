@@ -5,13 +5,13 @@ import type { Invoice, InvoiceStatus, InvoiceLoadingStatus } from "../types";
 
 interface InvoiceState {
   invoices: Invoice[];
-  filter: InvoiceStatus | "All";
+  filter: InvoiceStatus | "all";
   loadingStatus: InvoiceLoadingStatus;
 }
 
 const initialState: InvoiceState = {
   invoices: [],
-  filter: "All",
+  filter: "all",
   loadingStatus: "idle",
 };
 

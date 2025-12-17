@@ -7,20 +7,20 @@ import { Checkbox } from "@/components/ui/checkbox";
 import type { InvoiceStatus } from "@/features/invoices/types";
 
 interface StatusOptions {
-  id: InvoiceStatus | "All";
+  id: InvoiceStatus | "all";
   label: string;
 }
 
 interface InvoiceFiltersProp {
-  setFilter: (filter: InvoiceStatus | "All") => void;
-  filter: InvoiceStatus | "All";
+  setFilter: (filter: InvoiceStatus | "all") => void;
+  filter: InvoiceStatus | "all";
 }
 
 const STATUS_OPTIONS: StatusOptions[] = [
-  { id: "All", label: "All" },
-  { id: "Paid", label: "Paid" },
-  { id: "Pending", label: "Pending" },
-  { id: "Draft", label: "Draft" },
+  { id: "all", label: "All" },
+  { id: "paid", label: "Paid" },
+  { id: "pending", label: "Pending" },
+  { id: "draft", label: "Draft" },
 ];
 
 const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
@@ -79,7 +79,7 @@ const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
   }, []);
 
   // Handles filter selection
-  const handleFilterChange = (statusId: InvoiceStatus | "All") => {
+  const handleFilterChange = (statusId: InvoiceStatus | "all") => {
     setFilter(statusId); // Update the selected filter
 
     // Clear any previous timeout to prevent race conditions
