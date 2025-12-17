@@ -12,7 +12,7 @@ import {
   InvoiceList,
   InvoiceEmpty,
 } from "@/features/invoices/components/lists";
-import { Spinner } from "@/components/common/statusBadge/spinner";
+import { Spinner } from "@/components/common/spinner";
 
 const InvoicesRoute = () => {
   const dispatch = useAppDispatch();
@@ -32,11 +32,7 @@ const InvoicesRoute = () => {
   return (
     <div className="container mx-auto py-8 md:py-14 lg:py-20">
       <InvoiceHeader />
-      {showSpinner && (
-        <div className="flex flex-col items-center justify-center py-20">
-          <Spinner className="h-64 w-64" />
-        </div>
-      )}
+      {showSpinner && <Spinner />}
 
       {showList && <InvoiceList invoices={activeFilters} />}
 

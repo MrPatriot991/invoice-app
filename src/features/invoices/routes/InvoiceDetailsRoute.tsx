@@ -1,15 +1,18 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import {
   deleteInvoice,
   updateInvoiceStatus,
   selectInvoiceById,
+  selectStatus,
+  fetchInvoices,
 } from "@/features/invoices/store";
 
 import { useModal } from "@/provider/modal/useModal";
 import { GoBackButton } from "@/components/ui/GoBackButton";
 import { DetailsInvoice } from "@/features/invoices/components/details";
+import { Spinner } from "@/components/common/spinner";
 import {
   DetailsHeader,
   DetailsMobileFotter,
@@ -30,9 +33,10 @@ const InvoiceDetailsRoute = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  // Redux dispatch and selector to get invoice by id
+  // Redux dispatch and selectors to get invoice by id
   const dispatch = useAppDispatch();
   const invoiceById = useAppSelector(selectInvoiceById(id!));
+  const status = useAppSelector(selectStatus);
 
   // Hooks to manage modal state
   const { openModal, closeModal } = useModal();
@@ -85,6 +89,15 @@ const InvoiceDetailsRoute = () => {
     [handleDeleteClick, handleMarkAsPaid],
   );
 
+  // Loading data if it is not there
+  useEffect(() => {
+    if (!invoiceById && status === "idle") {
+      dispatch(fetchInvoices());
+    }
+  }, [dispatch, invoiceById, status]);
+
+  // The spinner is running while the data is not loaded.
+  if (status === "loading") return <Spinner />;
   // If no id, render nothing
   if (!id) return null;
   // If invoice not found, show placeholder
