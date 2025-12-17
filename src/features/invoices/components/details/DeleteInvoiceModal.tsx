@@ -2,14 +2,12 @@ import { useModal } from "@/provider/modal/useModal";
 
 import { Button } from "@/components/ui/Button";
 
-import type { Invoice } from "@/features/invoices/types";
-
 interface IdProps {
   id: string;
-  onDelet: (id: string) => Invoice[];
+  onDelete: (id: string) => void;
 }
 
-const DeleteInvoiceModal = ({ id, onDelet }: IdProps) => {
+const DeleteInvoiceModal = ({ id, onDelete }: IdProps) => {
   const { closeModal } = useModal();
 
   return (
@@ -32,7 +30,7 @@ const DeleteInvoiceModal = ({ id, onDelet }: IdProps) => {
         <Button
           variant="danger"
           className="px-3 py-2 sm:px-6 sm:py-4"
-          onClick={() => onDelet(id)}
+          onClick={() => onDelete(id)}
         >
           Delete
         </Button>

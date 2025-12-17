@@ -22,3 +22,21 @@ export async function fetchInvoicesApi() {
     return mockInvoices;
   }
 }
+
+// Sends a DELETE request to remove an invoice by its id
+// Errors are thrown so they can be handled by createAsyncThunk
+export async function deleteInvoiceApi(id: string) {
+  // Perform DELETE request to the API
+  const res = await fetch(`${API_URL}/invoices/${id}`, {
+    method: "DELETE",
+  });
+
+  // If the server responds with an error status,
+  // throw an error to be caught by the thunk
+  if (!res.ok) {
+    throw new Error("Failed to delete invoice");
+  }
+
+  // Return id so Redux can remove the invoice from the store
+  return id;
+}

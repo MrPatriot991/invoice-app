@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchInvoicesApi } from "@/shared/api/invoices.api";
+import { deleteInvoiceApi, fetchInvoicesApi } from "@/shared/api/invoices.api";
 
 import type { Invoice, InvoiceStatus, InvoiceLoadingStatus } from "../types";
 
@@ -19,6 +19,15 @@ export const fetchInvoices = createAsyncThunk(
   "invoices/fetchInvoices",
   async () => {
     const res = await fetchInvoicesApi();
+
+    return res;
+  },
+);
+
+export const deleteInvoice = createAsyncThunk(
+  "invoice/deleteInvoice",
+  async (id: string) => {
+    const res = await deleteInvoiceApi(id);
 
     return res;
   },
@@ -45,6 +54,11 @@ const invoiceSlice = createSlice({
       })
       .addCase(fetchInvoices.rejected, (state) => {
         state.loadingStatus = "error";
+      })
+
+      // Delete Invoice
+      .addCase(deleteInvoice.fulfilled, (state, action) => {
+        state.invoices.filter((invoice) => invoice.id !== action.payload);
       });
   },
 });

@@ -1,3 +1,4 @@
+import React from "react";
 import { StatusBadge } from "@/components/common/statusBadge";
 import { Button } from "@/components/ui/Button";
 
@@ -9,7 +10,7 @@ interface DetailsHeaderProps {
   buttons: ActionButton[];
 }
 
-const DetailsHeader = ({ status, buttons }: DetailsHeaderProps) => {
+const DetailsHeader = React.memo(({ status, buttons }: DetailsHeaderProps) => {
   return (
     <div className="mb-4 flex justify-between rounded-lg bg-container p-6 shadow-sm transition-colors duration-300 sm:mb-6 sm:p-8">
       <div className="flex w-full items-center justify-between gap-5 sm:w-auto sm:justify-start">
@@ -25,6 +26,6 @@ const DetailsHeader = ({ status, buttons }: DetailsHeaderProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default DetailsHeader;

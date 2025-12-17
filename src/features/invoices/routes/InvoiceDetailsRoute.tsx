@@ -1,5 +1,8 @@
+import { useCallback, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { selectInvoiceById } from "../store/invoice.selector";
+import { deleteInvoice } from "../store/invoice.slice";
 
 import { useModal } from "@/provider/modal/useModal";
 import { GoBackButton } from "@/components/ui/GoBackButton";
@@ -10,7 +13,6 @@ import {
   DeleteInvoiceModal,
 } from "@/features/invoices/components/details";
 
-import type { RootState } from "@/app/store";
 import type { ButtonVariant } from "@/components/ui/Button/Button";
 
 export interface ActionButton {
@@ -23,39 +25,45 @@ const InvoiceDetailsRoute = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const selectAllInvoices = useAppSelector(
-    (state: RootState) => state.invoices.invoices,
-  );
+  const dispatch = useAppDispatch();
+  const invoiceById = useAppSelector(selectInvoiceById(id!));
 
   const { openModal, closeModal } = useModal();
-
-  if (!id) return null;
-
-  const invoiceById = selectAllInvoices.find((invoice) => invoice.id === id);
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
-  const handleDeleteInvoice = (id: string) => {
-    navigate("/");
-    closeModal();
-    return selectAllInvoices.filter((invoice) => invoice.id !== id);
-  };
+  const handleDeleteInvoice = useCallback(
+    async (id: string) => {
+      try {
+        await dispatch(deleteInvoice(id)).unwrap();
+        navigate("/");
+        closeModal();
+      } catch (err) {
+        console.log("Error deleting", err);
+      }
+    },
+    [dispatch, navigate, closeModal],
+  );
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = useCallback(() => {
     openModal(
-      <DeleteInvoiceModal id={id} onDelet={handleDeleteInvoice} />,
+      <DeleteInvoiceModal id={id!} onDelete={handleDeleteInvoice} />,
       "center",
     );
-  };
+  }, [id, openModal, handleDeleteInvoice]);
 
-  const actionButtons: ActionButton[] = [
-    { text: "Edit", variant: "secondary" },
-    { text: "Delete", variant: "danger", onClick: handleDeleteClick },
-    { text: "Mark as Paid", variant: "purple" },
-  ];
+  const actionButtons: ActionButton[] = useMemo(
+    () => [
+      { text: "Edit", variant: "secondary" },
+      { text: "Delete", variant: "danger", onClick: handleDeleteClick },
+      { text: "Mark as Paid", variant: "purple" },
+    ],
+    [handleDeleteClick],
+  );
 
+  if (!id) return null;
   if (!invoiceById) {
     return <p>No invoice data</p>;
   }
