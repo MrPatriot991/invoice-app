@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useAppSelector } from "@/app/hooks";
 
 import { useModal } from "@/provider/modal/useModal";
 import { GoBackButton } from "@/components/ui/GoBackButton";
@@ -9,9 +10,8 @@ import {
   DeleteInvoiceModal,
 } from "@/features/invoices/components/details";
 
+import type { RootState } from "@/app/store";
 import type { ButtonVariant } from "@/components/ui/Button/Button";
-
-import { invoices } from "@/features/invoices/lib/utils/mockData";
 
 export interface ActionButton {
   text: string;
@@ -22,11 +22,16 @@ export interface ActionButton {
 const InvoiceDetailsRoute = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+
+  const selectAllInvoices = useAppSelector(
+    (state: RootState) => state.invoices.invoices,
+  );
+
   const { openModal, closeModal } = useModal();
 
   if (!id) return null;
 
-  const invoiceById = invoices.find((invoice) => invoice.id === id);
+  const invoiceById = selectAllInvoices.find((invoice) => invoice.id === id);
 
   const handleGoBack = () => {
     navigate(-1);
@@ -35,7 +40,7 @@ const InvoiceDetailsRoute = () => {
   const handleDeleteInvoice = (id: string) => {
     navigate("/");
     closeModal();
-    return invoices.filter((invoice) => invoice.id !== id);
+    return selectAllInvoices.filter((invoice) => invoice.id !== id);
   };
 
   const handleDeleteClick = () => {

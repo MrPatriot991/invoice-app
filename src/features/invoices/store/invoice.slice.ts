@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchInvoicesApi } from "@/shared/api/invoices.api";
 
 import type { Invoice, InvoiceStatus, InvoiceLoadingStatus } from "../types";
 
@@ -17,13 +18,9 @@ const initialState: InvoiceState = {
 export const fetchInvoices = createAsyncThunk(
   "invoices/fetchInvoices",
   async () => {
-    const res = await fetch("http://192.168.0.110:3000/invoices");
+    const res = await fetchInvoicesApi();
 
-    if (!res.ok) {
-      throw new Error("Faild to load data from the server");
-    }
-
-    return await res.json();
+    return res;
   },
 );
 

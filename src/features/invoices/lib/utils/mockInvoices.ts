@@ -1,6 +1,6 @@
 import type { Invoice } from "@/features/invoices/types";
 
-export const invoices: Invoice[] = [
+export const mockInvoices: Invoice[] = [
   {
     id: "RT3080",
     createdAt: "2021-08-18",

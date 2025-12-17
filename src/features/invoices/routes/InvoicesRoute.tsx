@@ -9,8 +9,6 @@ import {
   InvoiceEmpty,
 } from "@/features/invoices/components/lists";
 
-// import { invoices } from "@/features/invoices/lib/utils/mockData";
-
 import type { RootState } from "@/app/store";
 import type { InvoiceStatus } from "../types";
 
@@ -20,8 +18,6 @@ const InvoicesRoute = () => {
   const selectAllInvoices = useAppSelector(
     (state: RootState) => state.invoices.invoices,
   );
-
-  console.log(selectAllInvoices);
 
   useEffect(() => {
     dispatch(fetchInvoices());
