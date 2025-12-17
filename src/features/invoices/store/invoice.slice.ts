@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteInvoiceApi, fetchInvoicesApi } from "@/shared/api/invoices.api";
+import {
+  deleteInvoiceApi,
+  fetchInvoicesApi,
+  updateInvoiceStatusApi,
+} from "@/shared/api/invoices.api";
 
 import type { Invoice, InvoiceStatus, InvoiceLoadingStatus } from "../types";
 
@@ -25,9 +29,18 @@ export const fetchInvoices = createAsyncThunk(
 );
 
 export const deleteInvoice = createAsyncThunk(
-  "invoice/deleteInvoice",
+  "invoices/deleteInvoice",
   async (id: string) => {
     const res = await deleteInvoiceApi(id);
+
+    return res;
+  },
+);
+
+export const updateInvoiceStatus = createAsyncThunk(
+  "invoices/updateStatus",
+  async ({ id, status }: { id: string; status: InvoiceStatus }) => {
+    const res = await updateInvoiceStatusApi(id, status);
 
     return res;
   },
@@ -59,6 +72,15 @@ const invoiceSlice = createSlice({
       // Delete Invoice
       .addCase(deleteInvoice.fulfilled, (state, action) => {
         state.invoices.filter((invoice) => invoice.id !== action.payload);
+      })
+
+      // Update Status
+      .addCase(updateInvoiceStatus.fulfilled, (state, action) => {
+        const invoice = state.invoices.find(
+          (invoice) => invoice.id === action.payload.id,
+        );
+
+        if (invoice) invoice.status = action.payload.status;
       });
   },
 });

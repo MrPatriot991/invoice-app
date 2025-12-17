@@ -1,4 +1,5 @@
 import { mockInvoices } from "@/features/invoices/lib/utils/mockInvoices";
+import type { InvoiceStatus } from "@/features/invoices/types";
 
 // Get the API base URL from environment variables (Vite requires the VITE_ prefix)
 const API_URL = import.meta.env.VITE_API_URL;
@@ -39,4 +40,26 @@ export async function deleteInvoiceApi(id: string) {
 
   // Return id so Redux can remove the invoice from the store
   return id;
+}
+
+// Sends a PATCH request to update the status of a specific invoice by its id
+// Throws an error if the request fails so that createAsyncThunk can handle it
+export async function updateInvoiceStatusApi(
+  id: string,
+  status: InvoiceStatus,
+) {
+  // Perform PATCH request to update the invoice status on the server
+  const res = await fetch(`${API_URL}/invoices/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status }), // send the new status
+  });
+
+  // If the server responds with an error status, throw an error
+  if (!res.ok) {
+    throw new Error("Failed to update invoice status");
+  }
+
+  // Return id and status so Redux slice can update the store
+  return { id, status };
 }
