@@ -9,7 +9,7 @@ interface StatusProps {
 
 const StatusBadge = ({ status, className }: StatusProps) => {
   const baseStyle =
-    "w-[104px] flex gap-1 items-center heading-s-variant justify-center rounded-md px-[18px] py-3 transition-colors duration-300";
+    "w-[104px] flex gap-1 items-center heading-s-variant justify-center rounded-md px-[17px] py-3 transition-colors duration-300";
 
   const statusStyle = {
     paid: {
@@ -31,20 +31,20 @@ const StatusBadge = ({ status, className }: StatusProps) => {
 
   return (
     <div className={clsx(baseStyle, statusStyle.bg, className)}>
-      <span
+      <div
         className={clsx(
           statusStyle.dot,
-          "inline-block h-2 w-2 rounded-full transition-colors duration-300",
+          "h-2 w-2 rounded-full p-1 transition-colors duration-300",
         )}
       />
-      <span
+      <div
         className={clsx(
           statusStyle.text,
-          "inline-block capitalize transition-colors duration-300",
+          "capitalize transition-colors duration-300",
         )}
       >
         {status}
-      </span>
+      </div>
     </div>
   );
 };
