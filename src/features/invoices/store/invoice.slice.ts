@@ -27,7 +27,11 @@ export const fetchInvoices = createAsyncThunk(
 const invoiceSlice = createSlice({
   name: "invoices",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
 
@@ -44,5 +48,7 @@ const invoiceSlice = createSlice({
       });
   },
 });
+
+export const { setFilter } = invoiceSlice.actions;
 
 export default invoiceSlice.reducer;

@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import clsx from "clsx";
 
+import { selectFilter } from "@/features/invoices/store";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { setFilter } from "@/features/invoices/store";
+
 import { Checkbox } from "@/components/ui/checkbox";
 
 import type { InvoiceStatus } from "@/features/invoices/types";
@@ -11,11 +15,6 @@ interface StatusOptions {
   label: string;
 }
 
-interface InvoiceFiltersProp {
-  setFilter: (filter: InvoiceStatus | "all") => void;
-  filter: InvoiceStatus | "all";
-}
-
 const STATUS_OPTIONS: StatusOptions[] = [
   { id: "all", label: "All" },
   { id: "paid", label: "Paid" },
@@ -23,8 +22,11 @@ const STATUS_OPTIONS: StatusOptions[] = [
   { id: "draft", label: "Draft" },
 ];
 
-const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
+const InvoiceFilters = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const currentFilter = useAppSelector(selectFilter);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -80,7 +82,8 @@ const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
 
   // Handles filter selection
   const handleFilterChange = (statusId: InvoiceStatus | "all") => {
-    setFilter(statusId); // Update the selected filter
+    // Filter update action with the selected status
+    dispatch(setFilter(statusId));
 
     // Clear any previous timeout to prevent race conditions
     if (timeoutRef.current) {
@@ -127,7 +130,7 @@ const InvoiceFilters = ({ filter, setFilter }: InvoiceFiltersProp) => {
         )}
       >
         {STATUS_OPTIONS.map((option) => {
-          const isChecked = filter === option.id;
+          const isChecked = currentFilter === option.id;
 
           return (
             <div tabIndex={isOpen ? 0 : -1} key={option.id} role="option">

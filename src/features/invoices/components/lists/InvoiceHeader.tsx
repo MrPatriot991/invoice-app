@@ -3,14 +3,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { InvoiceFilters } from "../filters";
 
-import type { InvoiceStatus } from "../../types";
-
-interface InvoiceHeaderProp {
-  setFilter: (filter: InvoiceStatus | "All") => void;
-  filter: InvoiceStatus | "All";
-}
-
-const InvoiceHeader = ({ filter, setFilter }: InvoiceHeaderProp) => {
+const InvoiceHeader = () => {
   return (
     <header className="mb-8 flex items-center justify-between sm:mb-14">
       <div className="flex flex-col gap-1">
@@ -25,7 +18,7 @@ const InvoiceHeader = ({ filter, setFilter }: InvoiceHeaderProp) => {
         </p>
       </div>
       <div className="flex items-center gap-4 lg:gap-10">
-        <InvoiceFilters filter={filter} setFilter={setFilter} />
+        <InvoiceFilters />
         <Button variant="purple">
           <div className="rounded-full bg-white p-2">
             <Plus className="h-4 w-4 text-purple sm:h-6 sm:w-6" />
