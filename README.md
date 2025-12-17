@@ -2,7 +2,9 @@
 
 ## Status
 
-⚠️ The first working page is ready. Additional pages and functionality will be added gradually.
+⚠️ In progress  
+The invoice list page is ready.  
+The invoice details page has been added. Additional features are in development.
 
 ## Features Implemented
 
