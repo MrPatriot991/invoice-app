@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { fetchInvoices } from "@/features/invoices/store";
 
 import {
   InvoiceHeader,
@@ -6,14 +9,27 @@ import {
   InvoiceEmpty,
 } from "@/features/invoices/components/lists";
 
-import { invoices } from "@/features/invoices/lib/utils/mockData";
+// import { invoices } from "@/features/invoices/lib/utils/mockData";
 
+import type { RootState } from "@/app/store";
 import type { InvoiceStatus } from "../types";
 
 const InvoicesRoute = () => {
   const [filter, setFilter] = useState<InvoiceStatus | "All">("All");
+  const dispatch = useAppDispatch();
+  const selectAllInvoices = useAppSelector(
+    (state: RootState) => state.invoices.invoices,
+  );
 
-  const invoiceFiltered = invoices.filter(
+  console.log(selectAllInvoices);
+
+  useEffect(() => {
+    dispatch(fetchInvoices());
+
+    // eslint-disable-next-line
+  }, []);
+
+  const invoiceFiltered = selectAllInvoices.filter(
     (invoice) => filter === "All" || invoice.status === filter,
   );
 

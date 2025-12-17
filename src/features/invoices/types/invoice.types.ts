@@ -1,4 +1,9 @@
 /**
+ * Defines the possible loading states for asynchronous operations (fetching data).
+ */
+export type InvoiceLoadingStatus = "idle" | "loading" | "success" | "error";
+
+/**
  * Defines the business status of an invoice within the application.
  */
 export type InvoiceStatus = "Paid" | "Pending" | "Draft";

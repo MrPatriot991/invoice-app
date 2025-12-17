@@ -3,6 +3,13 @@ import type {
   InvoiceStatus,
   Address,
   InvoiceItem,
+  InvoiceLoadingStatus,
 } from "./invoice.types";
 
-export type { Invoice, InvoiceStatus, Address, InvoiceItem };
+export type {
+  Invoice,
+  InvoiceStatus,
+  Address,
+  InvoiceItem,
+  InvoiceLoadingStatus,
+};
