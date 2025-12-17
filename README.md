@@ -16,6 +16,13 @@
 - Reusable `Button` component with variants
 - Tailwind configured with custom colors and base styles
 
+### Routing
+
+- React Router setup
+- Invoice list route
+- Invoice details route
+- Scroll to top on route change
+
 ### Invoice Management
 
 - `InvoicesRoute` integrated into the app
@@ -25,6 +32,25 @@
 - `New Invoice` button in the header
 - Status filter functionality
 - TypeScript type definitions for invoices
+
+### Invoice Details
+
+- Invoice details page
+- Go back navigation button
+- Header with invoice status and action buttons
+- Client and sender information section
+- Items information section
+- Mobile footer with action buttons
+- Performant footer visibility handling on scroll
+
+### Modals
+
+- Global modal system using React Context
+- `ModalProvider` and `useModal` hook
+- `ModalRoot` rendered via React Portal
+- Support for different modal positions (center / left)
+- Sidebar offset support
+- Invoice deletion confirmation modal
 
 ## Installation
 
