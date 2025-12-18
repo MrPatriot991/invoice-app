@@ -1,6 +1,6 @@
 import { useModal } from "@/provider/modal/useModal";
 
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 interface IdProps {
   id: string;

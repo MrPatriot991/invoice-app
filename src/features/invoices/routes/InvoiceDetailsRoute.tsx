@@ -19,7 +19,7 @@ import {
   DeleteInvoiceModal,
 } from "@/features/invoices/components/details";
 
-import type { ButtonVariant } from "@/components/ui/Button/Button";
+import type { ButtonVariant } from "@/components/ui/button/Button";
 
 // Type for action buttons used in Header and MobileFooter
 export interface ActionButton {
@@ -96,14 +96,18 @@ const InvoiceDetailsRoute = () => {
     }
   }, [dispatch, invoiceById, status]);
 
-  // The spinner is running while the data is not loaded.
-  if (status === "loading") return <Spinner />;
-  // If no id, render nothing
-  if (!id) return null;
-  // If invoice not found, show placeholder
-  if (!invoiceById) {
-    return <p>No invoice data</p>;
+  if (status === "loading") {
+    return <Spinner />;
   }
+
+  if (status === "error") {
+    return <p>Failed to load invoice</p>;
+  }
+
+  if (!invoiceById && status === "success") {
+    return <p>Invoice not found</p>;
+  }
+  if (!invoiceById) return null;
 
   // Main render
   return (

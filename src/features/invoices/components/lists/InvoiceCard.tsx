@@ -27,7 +27,7 @@ const InvoiceCard = ({ invoice }: InvoiceCardProps) => {
 
     // interaction
     "cursor-pointer transition duration-300",
-    "hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl",
+    "hover:-translate-y-1 hover:scale-[1.01] ",
 
     // focus (keyboard)
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple",

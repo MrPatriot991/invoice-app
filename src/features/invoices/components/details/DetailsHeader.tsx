@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBadge } from "@/components/common/statusBadge";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 import type { InvoiceStatus } from "@/features/invoices/types";
 import type { ActionButton } from "@/features/invoices/routes/InvoiceDetailsRoute";

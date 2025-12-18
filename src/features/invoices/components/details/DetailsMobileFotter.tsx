@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import clsx from "clsx";
 
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 import type { ActionButton } from "@/features/invoices/routes/InvoiceDetailsRoute";
 
