@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
+
 import { useModal } from "./useModal";
 
 const ModalRoot = () => {
@@ -37,11 +38,12 @@ const ModalRoot = () => {
     center: "flex items-center justify-center p-4 md:p-10 z-50",
   };
 
-  const containerBase = "transition-colors duration-300 max-h-[100dvh]";
+  const containerBase =
+    "transition-colors duration-300 max-h-[100dvh] overflow-hidden";
 
   const containerVariants = {
-    left: "sm:max-w-[620px] lg:max-w-[720px] w-full h-auto flex sm:rounded-r-2xl  sm:mt-[79px] lg:mt-0 bg-main",
-    center: "max-w-[480px] bg-container rounded-xl",
+    left: "sm:max-w-[620px] lg:max-w-[720px] w-full flex sm:rounded-r-2xl  sm:mt-[79px] lg:mt-0 bg-main ",
+    center: "max-w-[480px] bg-form rounded-xl",
   };
 
   const contentVariants = {

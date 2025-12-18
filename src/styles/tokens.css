@@ -87,7 +87,8 @@
   /* Details */
   --color-total-bg: var(--color-gray-600);
 
-  /* Input Form */
+  /* Form */
+  --bg-form: var(--color-white);
   --color-border-input: var(--color-gray-300);
 }
 
@@ -125,6 +126,7 @@
   /* Details */
   --color-total-bg: var(--color-dark-400);
 
-  /* Input Form */
+  /* Form */
+  --bg-form: var(--color-dark-300);
   --color-border-input: var(--color-dark-200);
 }

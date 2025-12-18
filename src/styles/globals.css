@@ -28,4 +28,9 @@
   main {
     scrollbar-gutter: stable;
   }
+
+  .overflow-auto,
+  .overflow-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
 }

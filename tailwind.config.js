@@ -12,6 +12,7 @@ export default {
         main: "var(--bg-main)",
         container: "var(--bg-container)",
         table: "var(--bg-table-header)",
+        form: "var(--bg-form)",
 
         // Text colors
         primary: "var(--text-primary)",
