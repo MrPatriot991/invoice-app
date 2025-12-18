@@ -86,6 +86,9 @@
 
   /* Details */
   --color-total-bg: var(--color-gray-600);
+
+  /* Input Form */
+  --color-border-input: var(--color-gray-300);
 }
 
 .dark {
@@ -121,4 +124,7 @@
 
   /* Details */
   --color-total-bg: var(--color-dark-400);
+
+  /* Input Form */
+  --color-border-input: var(--color-dark-200);
 }
