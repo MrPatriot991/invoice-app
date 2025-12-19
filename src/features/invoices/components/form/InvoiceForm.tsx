@@ -5,6 +5,7 @@ import { useModal } from "@/provider/modal/useModal";
 import { Button } from "@/components/ui/button";
 import { GoBackButton } from "@/components/ui/GoBackButton";
 import { BillFormSection } from "./section/BillFormSection";
+import { BillToSection } from "./section/BillToSection";
 
 const InvoiceForm = () => {
   const [buttonHeight, setButtonHeight] = useState(0);
@@ -77,30 +78,40 @@ const InvoiceForm = () => {
     <div className="relative flex h-full flex-col">
       <div
         ref={scrollRef}
-        className="h-full overflow-auto scroll-smooth"
+        className="flex-1 overflow-y-auto"
         style={{ paddingBottom: padding }}
       >
-        <div className="mx-auto px-6 py-5 pt-24 sm:px-14 sm:py-8">
+        <form id="invoiceFormId" className="px-6 py-5 pt-24 sm:px-14 sm:py-14">
           <GoBackButton
             onClick={handleCloseModal}
             isModal
             className="mb-6 sm:hidden"
           />
-          <BillFormSection />
-        </div>
+          <h2 className="heading-m-variant mb-6 text-primary transition-colors duration-300 sm:mb-11">
+            New Invoice
+          </h2>
+          <div className="flex flex-col gap-10 sm:gap-12">
+            <BillFormSection />
+            <BillToSection />
+          </div>
+        </form>
       </div>
       <div
         ref={buttonRef}
         className={clsx(
-          "bg-form absolute bottom-0 left-0 right-0 flex w-full items-center justify-end px-6 py-5 sm:px-14 sm:py-8",
+          "absolute bottom-0 left-0 right-0 flex w-full items-center justify-end bg-form px-6 py-5 sm:px-14 sm:py-8",
           "transition-[transform,background-color] duration-300 ease-in-out will-change-transform",
           showButtons ? "translate-y-0" : "translate-y-full",
         )}
       >
-        <div className="flex gap-2">
-          <Button variant="secondary">Discard</Button>
-          <Button variant="dark">Save as Draft</Button>
-          <Button>Save & Send</Button>
+        <div className="flex w-full gap-2">
+          <Button onClick={closeModal} variant="secondary" className="mr-auto">
+            Discard
+          </Button>
+          <Button form="invoiceFormId" variant="dark">
+            Save as Draft
+          </Button>
+          <Button form="invoiceFormId">Save & Send</Button>
         </div>
       </div>
     </div>

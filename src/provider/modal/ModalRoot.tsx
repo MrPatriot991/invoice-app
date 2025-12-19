@@ -10,28 +10,37 @@ const ModalRoot = () => {
   useEffect(() => {
     if (!isOpen) return;
 
-    const original = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const scrollY = window.scrollY;
 
-    return () => {
-      document.body.style.overflow = original;
-    };
-  }, [isOpen]);
+    // Freeze the background (iOS-safe)
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
 
-  useEffect(() => {
-    if (!isOpen) return;
-
+    // Esc
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
     };
-
     window.addEventListener("keydown", onKey);
 
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      // Return the background
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+
+      window.scrollTo(0, scrollY);
+
+      window.removeEventListener("keydown", onKey);
+    };
   }, [isOpen, closeModal]);
 
   const overlayBase =
-    "fixed inset-0 z-30 bg-black/50 transition-colors duration-300";
+    "fixed inset-0 z-30 bg-black/50 transition-colors duration-300 overflow-y-hidden touch-none flex";
 
   const overlayVariants = {
     left: "flex",
@@ -39,7 +48,7 @@ const ModalRoot = () => {
   };
 
   const containerBase =
-    "transition-colors duration-300 max-h-[100dvh] overflow-hidden";
+    "transition-colors duration-300 overflow-hidden flex max-h-[100dvh]";
 
   const containerVariants = {
     left: "sm:max-w-[620px] lg:max-w-[720px] w-full flex sm:rounded-r-2xl  sm:mt-[79px] lg:mt-0 bg-main ",
