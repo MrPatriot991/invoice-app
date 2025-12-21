@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyle =
-    "px-4 sm:px-6 py-3 sm:py-4 rounded-full flex items-center gap-2 md:gap-4 heading-s-variant transition-colors duration-300";
+    "px-4 sm:px-6 py-3 sm:py-4 rounded-full text-center justify-center flex items-center gap-2 md:gap-4 heading-s-variant transition-colors duration-300";
 
   const variantStyle = {
     purple:
