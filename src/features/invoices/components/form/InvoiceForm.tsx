@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { GoBackButton } from "@/components/ui/GoBackButton";
 import { BillFormSection } from "./section/BillFormSection";
 import { BillToSection } from "./section/BillToSection";
+import { PaymentTermsSection } from "./section/PaymentTermsSection";
+import { ItemsSection } from "./section/ItemsSection";
 
 const InvoiceForm = () => {
   const [buttonHeight, setButtonHeight] = useState(0);
@@ -93,6 +95,8 @@ const InvoiceForm = () => {
           <div className="flex flex-col gap-10 sm:gap-12">
             <BillFormSection />
             <BillToSection />
+            <PaymentTermsSection />
+            <ItemsSection />
           </div>
         </form>
       </div>
