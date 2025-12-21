@@ -11,6 +11,7 @@
     "api": "json-server --watch db.json --host 0.0.0.0 --port 3000"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@reduxjs/toolkit": "^2.11.2",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -18,8 +19,10 @@
     "react": "^19.2.0",
     "react-datepicker": "^9.1.0",
     "react-dom": "^19.2.0",
+    "react-hook-form": "^7.69.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.10.1"
+    "react-router-dom": "^7.10.1",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
