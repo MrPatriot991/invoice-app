@@ -1,5 +1,5 @@
 import { mockInvoices } from "@/features/invoices/lib/utils/mockInvoices";
-import type { InvoiceStatus } from "@/features/invoices/types";
+import type { InvoiceStatus, Invoice } from "@/features/invoices/types";
 
 // Get the API base URL from environment variables (Vite requires the VITE_ prefix)
 const API_URL = import.meta.env.VITE_API_URL;
@@ -62,4 +62,20 @@ export async function updateInvoiceStatusApi(
 
   // Return id and status so Redux slice can update the store
   return { id, status };
+}
+
+// Sending invoice data to the server
+export async function createNewInvoiceApi(data: Invoice) {
+  const res = await fetch(`${API_URL}/invoices`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  // Checking if the request was successful
+  if (!res.ok) {
+    throw new Error("Failed to create invoice");
+  }
+
+  return { data };
 }

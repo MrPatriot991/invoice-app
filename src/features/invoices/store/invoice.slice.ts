@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  createNewInvoiceApi,
   deleteInvoiceApi,
   fetchInvoicesApi,
   updateInvoiceStatusApi,
@@ -46,6 +47,15 @@ export const updateInvoiceStatus = createAsyncThunk(
   },
 );
 
+export const createNewInvoice = createAsyncThunk(
+  "invoices/createNewInvoice",
+  async (data: Invoice) => {
+    const res = await createNewInvoiceApi(data);
+
+    return res;
+  },
+);
+
 const invoiceSlice = createSlice({
   name: "invoices",
   initialState,
@@ -81,6 +91,11 @@ const invoiceSlice = createSlice({
         );
 
         if (invoice) invoice.status = action.payload.status;
+      })
+
+      // Create New Invoice
+      .addCase(createNewInvoice.fulfilled, (state, action) => {
+        state.invoices.unshift(action.payload.data);
       });
   },
 });

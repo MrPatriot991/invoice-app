@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { FormProvider, type SubmitHandler } from "react-hook-form";
 import clsx from "clsx";
+import { v4 as uuidv4 } from "uuid";
+
+import { useAppDispatch } from "@/app/hooks";
+import { createNewInvoice } from "@/features/invoices/store/invoice.slice";
 
 import { useModal } from "@/provider/modal/useModal";
 import { useInvoiceForm } from "./hook/useInvoiceForm";
@@ -12,10 +16,13 @@ import { PaymentTermsSection } from "./section/PaymentTermsSection";
 import { ItemsSection } from "./section/ItemsSection";
 
 import type { InvoiceFormType } from "./schema";
+import type { Invoice } from "@/features/invoices/types";
 
 const InvoiceForm = () => {
   const methods = useInvoiceForm();
   const { handleSubmit } = methods;
+
+  const dispatch = useAppDispatch();
 
   const [buttonHeight, setButtonHeight] = useState(0);
   const [showButtons, setShowButtons] = useState(true);
@@ -82,9 +89,39 @@ const InvoiceForm = () => {
     closeModal();
   };
 
-  const onSubmit: SubmitHandler<InvoiceFormType> = (data) => {
-    console.log(data);
+  const prepareInvoicePayload = (
+    data: InvoiceFormType,
+    status: Invoice["status"],
+  ) => {
+    const addedMs = data.paymentTerms * 1000 * 60 * 60 * 24;
+    const paymentDueDate = new Date(data.createdAt.getTime() + addedMs);
 
+    const paymentDueString = paymentDueDate.toISOString().split("T")[0];
+    const createdAtString = data.createdAt.toISOString().split("T")[0];
+
+    return {
+      ...data,
+      id: uuidv4().slice(0, 6).toUpperCase(),
+      status: status,
+      total: data.items.reduce(
+        (acc, item) => acc + (item.price * item.quantity || 0),
+        0,
+      ),
+      createdAt: createdAtString,
+      paymentDue: paymentDueString,
+    };
+  };
+
+  const onSubmit: SubmitHandler<InvoiceFormType> = (data) => {
+    const payload = prepareInvoicePayload(data, "pending");
+    dispatch(createNewInvoice(payload));
+    closeModal();
+  };
+
+  const handleSaveAsDraft = () => {
+    const data = methods.getValues();
+    const draftPayload = prepareInvoicePayload(data, "draft");
+    dispatch(createNewInvoice(draftPayload));
     closeModal();
   };
 
@@ -100,7 +137,6 @@ const InvoiceForm = () => {
         <FormProvider {...methods}>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            id="invoiceFormId"
             className="px-6 py-5 pt-24 sm:px-14 sm:py-14"
           >
             <GoBackButton
@@ -133,7 +169,11 @@ const InvoiceForm = () => {
                 >
                   Discard
                 </Button>
-                <Button type="submit" variant="dark">
+                <Button
+                  type="button"
+                  variant="dark"
+                  onClick={handleSaveAsDraft}
+                >
                   Save as Draft
                 </Button>
                 <Button type="submit">Save & Send</Button>
