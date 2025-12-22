@@ -17,8 +17,8 @@ export const BillToSection = () => {
         {/* Name */}
         <Input
           label="Client’s Name"
-          {...register("billTo.clientName")}
-          error={errors.billTo?.clientName?.message}
+          {...register("clientName")}
+          error={errors?.clientName?.message}
         />
       </div>
 
@@ -26,8 +26,8 @@ export const BillToSection = () => {
       <div className="col-span-2 sm:col-span-3">
         <Input
           label="Client’s Email"
-          {...register("billTo.clientEmail")}
-          error={errors.billTo?.clientEmail?.message}
+          {...register("clientEmail")}
+          error={errors?.clientEmail?.message}
         />
       </div>
 
@@ -35,8 +35,8 @@ export const BillToSection = () => {
       <div className="col-span-2 sm:col-span-3">
         <Input
           label="Street Address"
-          {...register("billTo.streetAddress")}
-          error={errors.billTo?.streetAddress?.message}
+          {...register("clientAddress.street")}
+          error={errors.clientAddress?.street?.message}
         />
       </div>
 
@@ -44,8 +44,8 @@ export const BillToSection = () => {
       <div className="col-span-1">
         <Input
           label="City"
-          {...register("billTo.city")}
-          error={errors.billTo?.city?.message}
+          {...register("clientAddress.city")}
+          error={errors.clientAddress?.city?.message}
         />
       </div>
 
@@ -53,8 +53,8 @@ export const BillToSection = () => {
       <div className="col-span-1">
         <Input
           label="Post Code"
-          {...register("billTo.postCode")}
-          error={errors.billTo?.postCode?.message}
+          {...register("clientAddress.postCode")}
+          error={errors.clientAddress?.postCode?.message}
         />
       </div>
 
@@ -62,8 +62,8 @@ export const BillToSection = () => {
       <div className="col-span-2 sm:col-span-1">
         <Input
           label="Country"
-          {...register("billTo.country")}
-          error={errors.billTo?.country?.message}
+          {...register("clientAddress.country")}
+          error={errors.clientAddress?.country?.message}
         />
       </div>
     </fieldset>

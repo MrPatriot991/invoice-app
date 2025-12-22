@@ -7,29 +7,28 @@ export function useInvoiceForm(defaultValue?: Partial<InvoiceFormType>) {
   return useForm<InvoiceFormType>({
     resolver: zodResolver(invoiceSchema),
     defaultValues: defaultValue || {
-      billForm: {
+      createdAt: new Date(),
+      paymentDue: new Date(),
+      description: "",
+      paymentTerms: 30,
+      clientName: "",
+      clientEmail: "",
+      senderAddress: {
         street: "",
         city: "",
         postCode: "",
         country: "",
       },
-      billTo: {
-        clientName: "",
-        clientEmail: "",
-        streetAddress: "",
+      clientAddress: {
+        street: "",
         city: "",
         postCode: "",
         country: "",
       },
-      paymentInfo: {
-        invoiceDate: new Date(),
-        paymentTerm: "",
-        projectDescription: "",
-      },
       items: [
         {
           name: "",
-          qty: 1,
+          quantity: 1,
           price: 0,
           total: 0,
         },

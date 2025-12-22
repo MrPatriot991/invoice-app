@@ -19,8 +19,8 @@ export const BillFormSection = () => {
       <div className="col-span-2 sm:col-span-3">
         <Input
           label="Street Address"
-          {...register("billForm.street")}
-          error={errors.billForm?.street?.message}
+          {...register("senderAddress.street")}
+          error={errors.senderAddress?.street?.message}
         />
       </div>
 
@@ -28,8 +28,8 @@ export const BillFormSection = () => {
       <div className="col-span-1">
         <Input
           label="City"
-          {...register("billForm.city")}
-          error={errors.billForm?.city?.message}
+          {...register("senderAddress.city")}
+          error={errors.senderAddress?.city?.message}
         />
       </div>
 
@@ -37,8 +37,8 @@ export const BillFormSection = () => {
       <div className="col-span-1">
         <Input
           label="Post Code"
-          {...register("billForm.postCode")}
-          error={errors.billForm?.postCode?.message}
+          {...register("senderAddress.postCode")}
+          error={errors.senderAddress?.postCode?.message}
         />
       </div>
 
@@ -46,8 +46,8 @@ export const BillFormSection = () => {
       <div className="col-span-2 sm:col-span-1">
         <Input
           label="Country"
-          {...register("billForm.country")}
-          error={errors.billForm?.country?.message}
+          {...register("senderAddress.country")}
+          error={errors.senderAddress?.country?.message}
         />
       </div>
     </fieldset>

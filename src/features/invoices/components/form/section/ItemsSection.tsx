@@ -20,14 +20,12 @@ export const ItemsSection = () => {
     name: "items",
   });
 
-  const hasItemErrors = errors.items?.some((item) => item?.qty || item?.price);
-
   return (
     <div>
       <h3 className="mb-4 text-lg text-gray-500">Item List</h3>
 
       {fields.map((_, index) => {
-        const qty = watch(`items.${index}.qty`) || 0;
+        const qty = watch(`items.${index}.quantity`) || 0;
         const price = watch(`items.${index}.price`) || 0;
         const total = qty * price;
 
@@ -45,7 +43,7 @@ export const ItemsSection = () => {
             </div>
             <div className="col-span-2 justify-center">
               <Controller
-                name={`items.${index}.qty`}
+                name={`items.${index}.quantity`}
                 control={control}
                 rules={{
                   required: "Quantity is required",
@@ -65,7 +63,7 @@ export const ItemsSection = () => {
                           : Number(e.target.value),
                       )
                     }
-                    error={errors.items?.[index]?.qty?.message}
+                    error={errors.items?.[index]?.quantity?.message}
                   />
                 )}
               />
@@ -104,16 +102,10 @@ export const ItemsSection = () => {
         type="button"
         variant="secondary"
         className="w-full"
-        onClick={() => append({ name: "", qty: 1, price: 0, total: 0 })}
+        onClick={() => append({ name: "", quantity: 1, price: 0, total: 0 })}
       >
         + Add New Item
       </Button>
-
-      {hasItemErrors && (
-        <p className="mt-4 text-center text-red-500">
-          Please fill all required item fields before submitting.
-        </p>
-      )}
     </div>
   );
 };

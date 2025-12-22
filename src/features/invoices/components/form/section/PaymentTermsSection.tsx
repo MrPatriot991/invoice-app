@@ -17,9 +17,9 @@ export const PaymentTermsSection = () => {
       {/* Invoice Date */}
       <div className="col-span-2 w-full sm:col-span-1">
         <SimpleDatePicker
-          name="paymentInfo.invoiceDate"
-          label="Issue Date"
-          error={errors.paymentInfo?.invoiceDate?.message}
+          name="createdAt"
+          label="Invoice Date"
+          error={errors.createdAt?.message}
         />
       </div>
 
@@ -27,13 +27,13 @@ export const PaymentTermsSection = () => {
       <div className="col-span-2 sm:col-span-1">
         <Select
           label="Payment Terms"
-          {...register("paymentInfo.paymentTerm")}
-          error={errors.paymentInfo?.paymentTerm?.message}
+          {...register("paymentTerms", { valueAsNumber: true })}
+          error={errors.paymentTerms?.message}
         >
-          <option value="Net 1 Day">Net 1 Day</option>
-          <option value="Net 7 Days">Net 7 Days</option>
-          <option value="Net 14 Days">Net 14 Days</option>
-          <option value="Net 30 Days">Net 30 Days</option>
+          <option value={1}>Net 1 Day</option>
+          <option value={7}>Net 7 Days</option>
+          <option value={14}>Net 14 Days</option>
+          <option value={30}>Net 30 Days</option>
         </Select>
       </div>
 
@@ -41,8 +41,8 @@ export const PaymentTermsSection = () => {
       <div className="col-span-2">
         <Input
           label="Project Description"
-          {...register("paymentInfo.projectDescription")}
-          error={errors.paymentInfo?.projectDescription?.message}
+          {...register("description")}
+          error={errors.description?.message}
         />
       </div>
     </div>
