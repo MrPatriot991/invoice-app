@@ -16,15 +16,15 @@ export const invoiceSchema = z.object({
     country: z.string().min(1, "required"),
   }),
   paymentInfo: z.object({
-    invoiceDate: z.string().min(1, "required"),
+    invoiceDate: z.date().min(1, "required"),
     paymentTerm: z.string().min(1, "required"),
     projectDescription: z.string().min(1, "required"),
   }),
   items: z.array(
     z.object({
-      name: z.string().min(1),
-      qty: z.number().min(1),
-      price: z.number().min(1),
+      name: z.string().min(1, "required"),
+      qty: z.number().min(1, "required"),
+      price: z.number().min(1, "required"),
       total: z.number(),
     }),
   ),

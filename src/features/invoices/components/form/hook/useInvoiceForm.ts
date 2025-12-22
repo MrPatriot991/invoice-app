@@ -22,7 +22,7 @@ export function useInvoiceForm(defaultValue?: Partial<InvoiceFormType>) {
         country: "",
       },
       paymentInfo: {
-        invoiceDate: "",
+        invoiceDate: new Date(),
         paymentTerm: "",
         projectDescription: "",
       },
