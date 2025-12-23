@@ -17,8 +17,6 @@ export const ItemsInfo = ({ items, total }: ItemsInfoProps) => {
         </div>
 
         {items.map((item) => {
-          const totalRound = item.total.toFixed();
-
           return (
             <div
               key={item.name}
@@ -31,13 +29,13 @@ export const ItemsInfo = ({ items, total }: ItemsInfoProps) => {
 
               {/* TOTAL (mobile) */}
               <div className="row-span-2 flex items-center justify-end text-primary transition-colors duration-300 md:hidden">
-                <span>£ {totalRound}</span>
+                <span>£ {item.total}</span>
               </div>
 
               {/* QTY + PRICE (mobile stacked under name) */}
               <div className="heading-s-variant flex gap-0 text-secondary transition-colors duration-300 sm:gap-4 md:hidden">
                 <span>{item.quantity} x</span>
-                <span>£ {totalRound}</span>
+                <span>£ {item.price}</span>
               </div>
 
               {/* DESKTOP VERSION */}
@@ -46,11 +44,11 @@ export const ItemsInfo = ({ items, total }: ItemsInfoProps) => {
               </div>
 
               <div className="heading-s-variant hidden text-right text-secondary transition-colors duration-300 md:block">
-                {totalRound}
+                £ {item.price}
               </div>
 
               <div className="heading-s-variant hidden text-right text-primary transition-colors duration-300 md:block">
-                <span>£ {item.total.toFixed(0)}</span>
+                <span>£ {item.total}</span>
               </div>
             </div>
           );

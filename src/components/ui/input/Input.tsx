@@ -29,7 +29,7 @@ const Input = ({
     "border border-[var(--color-border-input)] bg-[var(--bg-container)]",
 
     // states
-    "focus:border-purple focus:outline-none hover:border-purple",
+    "focus:border-purple focus:outline-none hover:border-purple focus:ring-1",
 
     // error
     error && "border-danger",
