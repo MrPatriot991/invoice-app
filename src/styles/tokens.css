@@ -90,6 +90,9 @@
   /* Form */
   --bg-form: var(--color-white);
   --color-border-input: var(--color-gray-300);
+
+  /* Scrollbar */
+  --bg-color-thumb: var(--color-gray-300);
 }
 
 .dark {
@@ -129,4 +132,7 @@
   /* Form */
   --bg-form: var(--color-dark-300);
   --color-border-input: var(--color-dark-200);
+
+  /* Scrollbar */
+  --bg-color-thumb: var(--color-dark-200);
 }

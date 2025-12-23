@@ -22,6 +22,20 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-y: auto;
 
+    *::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--bg-color-thumb);
+      border-radius: 20px;
+      border: 2px solid transparent;
+    }
+
     @apply bg-main;
   }
 
