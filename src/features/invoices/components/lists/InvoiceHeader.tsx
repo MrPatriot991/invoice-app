@@ -1,11 +1,15 @@
 import { Plus } from "lucide-react";
 
+import { selectAllInvoices } from "@/features/invoices/store/invoice.selector";
+import { useAppSelector } from "@/app/hooks";
+
 import { useModal } from "@/provider/modal/useModal";
+import { InvoiceForm } from "@/features/invoices/components/form";
 import { Button } from "@/components/ui/button";
 import { InvoiceFilters } from "@/features/invoices/components/filters";
-import { InvoiceForm } from "../form";
 
 const InvoiceHeader = () => {
+  const invoiceLength = useAppSelector(selectAllInvoices).length;
   const { openModal } = useModal();
 
   const handleCreateInvoice = () => {
@@ -19,10 +23,10 @@ const InvoiceHeader = () => {
           Invoices
         </h1>
         <p className="body-variant hidden text-tertiary transition-colors duration-300 md:block">
-          There are<span> 7 </span>total invoices
+          There are<span> {invoiceLength} </span>total invoices
         </p>
         <p className="body-variant text-tertiary transition-colors duration-300 md:hidden">
-          <span> 7 </span> invoices
+          <span> {invoiceLength} </span> invoices
         </p>
       </div>
       <div className="flex items-center gap-4 lg:gap-10">
