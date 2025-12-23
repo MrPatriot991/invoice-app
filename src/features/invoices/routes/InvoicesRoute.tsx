@@ -34,7 +34,7 @@ const InvoicesRoute = () => {
       <InvoiceHeader />
       {showSpinner && <Spinner />}
 
-      {showList && <InvoiceList invoices={activeFilters} />}
+      {showList && <InvoiceList />}
 
       {showEmpty && (
         <div className="flex min-h-[60vh] items-center justify-center px-4 py-8 sm:min-h-[50vh] lg:sm:min-h-[60vh]">

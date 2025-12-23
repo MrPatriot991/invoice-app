@@ -1,15 +1,14 @@
-import type { Invoice } from "../../types";
+import { useAppSelector } from "@/app/hooks";
+import { selectFilterInvoices } from "@/features/invoices/store";
 import InvoiceCard from "./InvoiceCard";
 
-interface InvoiceListProps {
-  invoices: Invoice[];
-}
+const InvoiceList = () => {
+  const invoicesFiltered = useAppSelector(selectFilterInvoices);
 
-const InvoiceList = ({ invoices }: InvoiceListProps) => {
   return (
     <ul className="flex flex-col gap-4">
-      {invoices &&
-        invoices.map((invoice) => (
+      {invoicesFiltered &&
+        invoicesFiltered.map((invoice) => (
           <li key={invoice.id}>
             <InvoiceCard invoice={invoice} />
           </li>
