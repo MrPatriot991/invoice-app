@@ -11,6 +11,7 @@ import {
 
 import { useModal } from "@/provider/modal/useModal";
 import { GoBackButton } from "@/components/ui/GoBackButton";
+import { InvoiceForm } from "../components/form";
 import { DetailsInvoice } from "@/features/invoices/components/details";
 import { Spinner } from "@/components/common/spinner";
 import {
@@ -78,15 +79,20 @@ const InvoiceDetailsRoute = () => {
     }
   }, [dispatch, invoiceById, id]);
 
+  // The handler function opens a modal window for editing the invoice.
+  const handleEditeInvoice = useCallback(() => {
+    openModal(<InvoiceForm invoiceId={id} />, "left");
+  }, [openModal, id]);
+
   // Action buttons for Header and MobileFooter
   // useMemo prevents recreating the array on every render
   const actionButtons: ActionButton[] = useMemo(
     () => [
-      { text: "Edit", variant: "secondary" },
+      { text: "Edit", variant: "secondary", onClick: handleEditeInvoice },
       { text: "Delete", variant: "danger", onClick: handleDeleteClick },
       { text: "Mark as Paid", variant: "purple", onClick: handleMarkAsPaid },
     ],
-    [handleDeleteClick, handleMarkAsPaid],
+    [handleDeleteClick, handleMarkAsPaid, handleEditeInvoice],
   );
 
   // Loading data if it is not there

@@ -79,3 +79,18 @@ export async function createNewInvoiceApi(data: Invoice) {
 
   return { data };
 }
+
+// Send a PATCH request to update an invoice
+export async function updateInvoiceApi(id: string, data: Invoice) {
+  const res = await fetch(`${API_URL}/invoices/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to update invoice");
+  }
+
+  return { id, data };
+}

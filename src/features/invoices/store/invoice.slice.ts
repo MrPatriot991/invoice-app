@@ -3,6 +3,7 @@ import {
   createNewInvoiceApi,
   deleteInvoiceApi,
   fetchInvoicesApi,
+  updateInvoiceApi,
   updateInvoiceStatusApi,
 } from "@/shared/api/invoices.api";
 
@@ -56,6 +57,15 @@ export const createNewInvoice = createAsyncThunk(
   },
 );
 
+export const updateExistingInvoice = createAsyncThunk(
+  "invoices/updateInvoice",
+  async ({ id, data }: { id: string; data: Invoice }) => {
+    const res = await updateInvoiceApi(id, data);
+
+    return res;
+  },
+);
+
 const invoiceSlice = createSlice({
   name: "invoices",
   initialState,
@@ -96,6 +106,17 @@ const invoiceSlice = createSlice({
       // Create New Invoice
       .addCase(createNewInvoice.fulfilled, (state, action) => {
         state.invoices.unshift(action.payload.data);
+      })
+
+      // Update Invoice
+      .addCase(updateExistingInvoice.fulfilled, (state, action) => {
+        const index = state.invoices.findIndex(
+          (invoice) => invoice.id === action.payload.id,
+        );
+
+        if (index !== -1) {
+          state.invoices[index] = action.payload.data;
+        }
       });
   },
 });

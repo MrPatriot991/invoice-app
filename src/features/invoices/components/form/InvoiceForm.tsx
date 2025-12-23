@@ -3,8 +3,12 @@ import { FormProvider, type SubmitHandler } from "react-hook-form";
 import clsx from "clsx";
 import { v4 as uuidv4 } from "uuid";
 
-import { useAppDispatch } from "@/app/hooks";
-import { createNewInvoice } from "@/features/invoices/store/invoice.slice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import {
+  createNewInvoice,
+  updateExistingInvoice,
+} from "@/features/invoices/store/invoice.slice";
+import { selectInvoiceById } from "@/features/invoices/store";
 
 import { useModal } from "@/provider/modal/useModal";
 import { useInvoiceForm } from "./hook/useInvoiceForm";
@@ -18,11 +22,24 @@ import { ItemsSection } from "./section/ItemsSection";
 import type { InvoiceFormType } from "./schema";
 import type { Invoice } from "@/features/invoices/types";
 
-const InvoiceForm = () => {
-  const methods = useInvoiceForm();
-  const { handleSubmit } = methods;
+interface InvoiceFormProps {
+  invoiceId?: string;
+}
 
+const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
   const dispatch = useAppDispatch();
+  const invoiceById = useAppSelector(selectInvoiceById(invoiceId!));
+
+  const methods = useInvoiceForm({
+    defaultValues: invoiceById
+      ? {
+          ...invoiceById,
+          createdAt: new Date(invoiceById.createdAt),
+          paymentDue: new Date(invoiceById.paymentDue),
+        }
+      : undefined,
+  });
+  const { handleSubmit } = methods;
 
   const [buttonHeight, setButtonHeight] = useState(0);
   const [showButtons, setShowButtons] = useState(true);
@@ -85,35 +102,39 @@ const InvoiceForm = () => {
   const prepareInvoicePayload = (
     data: InvoiceFormType,
     status: Invoice["status"],
-  ) => {
+    existingId?: string,
+  ): Invoice => {
     const addedMs = data.paymentTerms * 1000 * 60 * 60 * 24;
     const paymentDueDate = new Date(data.createdAt.getTime() + addedMs);
 
-    const paymentDueString = paymentDueDate.toISOString().split("T")[0];
-    const createdAtString = data.createdAt.toISOString().split("T")[0];
-
     return {
       ...data,
-      id: uuidv4().slice(0, 6).toUpperCase(),
+      id: existingId || uuidv4().slice(0, 6).toUpperCase(),
       status: status,
       total: data.items.reduce(
         (acc, item) => acc + (item.price * item.quantity || 0),
         0,
       ),
-      createdAt: createdAtString,
-      paymentDue: paymentDueString,
+      createdAt: data.createdAt.toISOString().split("T")[0],
+      paymentDue: paymentDueDate.toISOString().split("T")[0],
     };
   };
 
   const onSubmit: SubmitHandler<InvoiceFormType> = (data) => {
-    const payload = prepareInvoicePayload(data, "pending");
-    dispatch(createNewInvoice(payload));
+    const payload = prepareInvoicePayload(data, "pending", invoiceId);
+
+    if (invoiceId) {
+      dispatch(updateExistingInvoice({ id: invoiceId, data: payload }));
+    } else {
+      dispatch(createNewInvoice(payload));
+    }
     closeModal();
   };
 
   const handleSaveAsDraft = () => {
     const data = methods.getValues();
     const draftPayload = prepareInvoicePayload(data, "draft");
+
     dispatch(createNewInvoice(draftPayload));
     closeModal();
   };
@@ -137,9 +158,18 @@ const InvoiceForm = () => {
               isModal
               className="mb-6 sm:hidden"
             />
+
             <h2 className="heading-m-variant mb-6 text-primary transition-colors duration-300 sm:mb-11">
-              New Invoice
+              {invoiceId ? (
+                <>
+                  Edit <span className="text-[var(--color-gray-400)]">#</span>
+                  {invoiceId}
+                </>
+              ) : (
+                "New Invoice"
+              )}
             </h2>
+
             <div className="flex flex-col gap-10 sm:gap-12">
               <BillFormSection />
               <BillToSection />
@@ -154,23 +184,32 @@ const InvoiceForm = () => {
                 showButtons ? "translate-y-0" : "translate-y-full",
               )}
             >
-              <div className="flex w-full gap-2">
-                <Button
-                  onClick={closeModal}
-                  variant="secondary"
-                  className="mr-auto"
-                >
-                  Discard
-                </Button>
-                <Button
-                  type="button"
-                  variant="dark"
-                  onClick={handleSaveAsDraft}
-                >
-                  Save as Draft
-                </Button>
-                <Button type="submit">Save & Send</Button>
-              </div>
+              {invoiceId ? (
+                <div className="flex w-full justify-end gap-2">
+                  <Button onClick={closeModal} variant="secondary">
+                    Discard
+                  </Button>
+                  <Button type="submit">Save Changes</Button>
+                </div>
+              ) : (
+                <div className="flex w-full gap-2">
+                  <Button
+                    onClick={closeModal}
+                    variant="secondary"
+                    className="mr-auto"
+                  >
+                    Discard
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="dark"
+                    onClick={handleSaveAsDraft}
+                  >
+                    Save as Draft
+                  </Button>
+                  <Button type="submit">Save & Send</Button>
+                </div>
+              )}
             </div>
           </form>
         </FormProvider>
