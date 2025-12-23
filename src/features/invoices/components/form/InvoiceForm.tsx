@@ -30,15 +30,7 @@ const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
   const dispatch = useAppDispatch();
   const invoiceById = useAppSelector(selectInvoiceById(invoiceId!));
 
-  const methods = useInvoiceForm({
-    defaultValues: invoiceById
-      ? {
-          ...invoiceById,
-          createdAt: new Date(invoiceById.createdAt),
-          paymentDue: new Date(invoiceById.paymentDue),
-        }
-      : undefined,
-  });
+  const methods = useInvoiceForm(invoiceById);
   const { handleSubmit } = methods;
 
   const [buttonHeight, setButtonHeight] = useState(0);
@@ -107,14 +99,22 @@ const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
     const addedMs = data.paymentTerms * 1000 * 60 * 60 * 24;
     const paymentDueDate = new Date(data.createdAt.getTime() + addedMs);
 
+    const validItems = data.items.filter(
+      (item) => item.name && item.name.trim() !== "",
+    );
+
     return {
       ...data,
       id: existingId || uuidv4().slice(0, 6).toUpperCase(),
       status: status,
-      total: data.items.reduce(
+      total: validItems.reduce(
         (acc, item) => acc + (item.price * item.quantity || 0),
         0,
       ),
+      items: validItems.map((item) => ({
+        ...item,
+        total: (item.quantity || 0) * (item.price || 0),
+      })),
       createdAt: data.createdAt.toISOString().split("T")[0],
       paymentDue: paymentDueDate.toISOString().split("T")[0],
     };
@@ -135,7 +135,11 @@ const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
     const data = methods.getValues();
     const draftPayload = prepareInvoicePayload(data, "draft");
 
-    dispatch(createNewInvoice(draftPayload));
+    if (invoiceId) {
+      dispatch(updateExistingInvoice({ id: invoiceId, data: draftPayload }));
+    } else {
+      dispatch(createNewInvoice(draftPayload));
+    }
     closeModal();
   };
 
