@@ -2,9 +2,11 @@
 
 ## Status
 
-⚠️ In progress  
-The invoice list page is ready.  
-The invoice details page has been added. Additional features are in development.
+⚠️ In progress
+
+- Invoice list and details pages are fully functional.
+- **New Feature**: Invoice creation and form validation are implemented.
+  Additional features are in development.
 
 ## Features Implemented
 
@@ -53,6 +55,30 @@ The invoice details page has been added. Additional features are in development.
 - Support for different modal positions (center / left)
 - Sidebar offset support
 - Invoice deletion confirmation modal
+- Support for "Create Invoice" side-drawer modal.
+- Body scroll locking (iOS-safe) when modals are active.
+
+### State Management & Data Fetching
+
+- **Redux Toolkit Integration**: Full store setup for invoice management.
+- **Async Logic**: Implemented Async Thunks for fetching, creating, and updating invoice status (Mark as Paid).
+- **Advanced Selectors**:
+  - Memoized sorting (newest first) to ensure stable references and performance.
+  - Efficient filtering by status using `reselect`.
+- **API Layer**: Integration with `json-server` for persistent data storage.
+
+### Form Handling (Create/Edit Invoice)
+
+- **React Hook Form + Zod**: Complete form management with strict schema validation.
+- **Complex Form Architecture**:
+  - Refactored `ItemsSection` using **composition** and `useFieldArray` for dynamic item lists.
+  - Custom form components: `Input`, `Select`, `SelectDatePicker` (using `react-datepicker`).
+  - Specialized sections: `BillToSection`, `BillFromSection`, `PaymentTermsSection`.
+- **Real-time Calculations**: Automatic price and total calculation for items with fallback values.
+- **UX Improvements**:
+  - Prevented layout shift on DatePicker toggle using stable scrollbar gutters.
+  - Safe body freezing for modals on iOS.
+  - Focus management and performance optimization in dynamic lists.
 
 ## Installation
 
