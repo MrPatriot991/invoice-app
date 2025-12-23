@@ -40,7 +40,7 @@ const SimpleDatePicker = ({ name, label, error }: SimpleDatePickerProps) => {
   const { control } = useFormContext<InvoiceFormType>();
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex min-h-20 flex-col gap-2">
       <div className="flex items-center justify-between">
         {label && (
           <label className="body-variant text-secondary transition-colors duration-300">
