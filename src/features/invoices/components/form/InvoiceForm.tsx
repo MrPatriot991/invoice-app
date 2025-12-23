@@ -46,27 +46,20 @@ const InvoiceForm = () => {
     if (!scrollContainer) return;
 
     const handleScroll = () => {
-      if (timeoutRef.current !== undefined) {
-        clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
       const currentScrollY = scrollContainer.scrollTop;
-      const scrollHeight = scrollContainer.scrollHeight;
-      const clientHeight = scrollContainer.clientHeight;
+      const isNearBottom =
+        scrollContainer.scrollHeight -
+          scrollContainer.clientHeight -
+          currentScrollY <
+        100;
+      const isScrollingUp = currentScrollY < lastScrollYRef.current;
+      const isAtTop = currentScrollY < 50;
 
-      const isNearBottom = scrollHeight - clientHeight - currentScrollY < 100;
-
-      if (
-        currentScrollY < lastScrollYRef.current ||
-        currentScrollY < 50 ||
-        isNearBottom
-      ) {
+      if (isScrollingUp || isAtTop || isNearBottom) {
         setShowButtons(true);
-      } else if (
-        currentScrollY > lastScrollYRef.current &&
-        currentScrollY > 50 &&
-        !isNearBottom
-      ) {
+      } else {
         timeoutRef.current = window.setTimeout(() => {
           setShowButtons(false);
         }, 200);
