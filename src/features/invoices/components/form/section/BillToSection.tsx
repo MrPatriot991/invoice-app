@@ -16,6 +16,7 @@ export const BillToSection = () => {
       <div className="col-span-2 sm:col-span-3">
         {/* Name */}
         <Input
+          type="text"
           label="Client’s Name"
           {...register("clientName")}
           error={errors?.clientName?.message}
@@ -25,6 +26,7 @@ export const BillToSection = () => {
       {/* Email */}
       <div className="col-span-2 sm:col-span-3">
         <Input
+          type="text"
           label="Client’s Email"
           {...register("clientEmail")}
           error={errors?.clientEmail?.message}
@@ -34,6 +36,7 @@ export const BillToSection = () => {
       {/* Street Address */}
       <div className="col-span-2 sm:col-span-3">
         <Input
+          type="text"
           label="Street Address"
           {...register("clientAddress.street")}
           error={errors.clientAddress?.street?.message}
@@ -43,6 +46,7 @@ export const BillToSection = () => {
       {/* City */}
       <div className="col-span-1">
         <Input
+          type="text"
           label="City"
           {...register("clientAddress.city")}
           error={errors.clientAddress?.city?.message}
@@ -52,6 +56,7 @@ export const BillToSection = () => {
       {/* Post Code */}
       <div className="col-span-1">
         <Input
+          type="text"
           label="Post Code"
           {...register("clientAddress.postCode")}
           error={errors.clientAddress?.postCode?.message}
@@ -61,6 +66,7 @@ export const BillToSection = () => {
       {/* Country */}
       <div className="col-span-2 sm:col-span-1">
         <Input
+          type="text"
           label="Country"
           {...register("clientAddress.country")}
           error={errors.clientAddress?.country?.message}

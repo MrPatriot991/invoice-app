@@ -31,7 +31,7 @@ const InvoiceHeader = () => {
       </div>
       <div className="flex items-center gap-4 lg:gap-10">
         <InvoiceFilters />
-        <Button variant="purple" onClick={handleCreateInvoice}>
+        <Button variant="purple" type="button" onClick={handleCreateInvoice}>
           <div className="rounded-full bg-white p-2">
             <Plus className="h-4 w-4 text-purple sm:h-6 sm:w-6" />
           </div>

@@ -19,7 +19,7 @@ const DetailsHeader = React.memo(({ status, buttons }: DetailsHeaderProps) => {
       </div>
       <div className="hidden items-center gap-2 sm:flex">
         {buttons.map(({ text, variant, onClick }) => (
-          <Button key={text} variant={variant} onClick={onClick}>
+          <Button type="button" key={text} variant={variant} onClick={onClick}>
             {text}
           </Button>
         ))}

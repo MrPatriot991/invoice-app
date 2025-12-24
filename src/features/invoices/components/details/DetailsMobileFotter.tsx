@@ -67,7 +67,7 @@ const DetailsMobileFotter = React.memo(
         )}
       >
         {buttons.map(({ text, variant, onClick }) => (
-          <Button key={text} variant={variant} onClick={onClick}>
+          <Button type="button" key={text} variant={variant} onClick={onClick}>
             {text}
           </Button>
         ))}

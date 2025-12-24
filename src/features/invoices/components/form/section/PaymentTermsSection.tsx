@@ -40,6 +40,7 @@ export const PaymentTermsSection = () => {
       {/* Project Description */}
       <div className="col-span-2">
         <Input
+          type="text"
           label="Project Description"
           {...register("description")}
           error={errors.description?.message}

@@ -190,7 +190,11 @@ const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
             >
               {invoiceId ? (
                 <div className="flex w-full justify-end gap-2">
-                  <Button onClick={closeModal} variant="secondary">
+                  <Button
+                    type="button"
+                    onClick={closeModal}
+                    variant="secondary"
+                  >
                     Discard
                   </Button>
                   <Button type="submit">Save Changes</Button>
@@ -198,6 +202,7 @@ const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
               ) : (
                 <div className="flex w-full gap-2">
                   <Button
+                    type="button"
                     onClick={closeModal}
                     variant="secondary"
                     className="mr-auto"

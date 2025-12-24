@@ -88,6 +88,7 @@ const ItemRow = ({
     <div className="mb-4 grid grid-cols-9 gap-4 sm:grid-cols-12">
       <div className="col-span-9 sm:col-span-5">
         <Input
+          type="text"
           label="Item Name"
           {...register(`items.${index}.name`)}
           error={errors.items?.[index]?.name?.message}

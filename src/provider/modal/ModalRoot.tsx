@@ -67,7 +67,12 @@ const ModalRoot = () => {
   return createPortal(
     <>
       {isOpen && (
-        <div className={overlayClass} onClick={closeModal}>
+        <div
+          className={overlayClass}
+          onClick={closeModal}
+          aria-modal="true"
+          role="dialog"
+        >
           <div className={containerClass} onClick={(e) => e.stopPropagation()}>
             <div className={contentClass}>{content}</div>
           </div>
