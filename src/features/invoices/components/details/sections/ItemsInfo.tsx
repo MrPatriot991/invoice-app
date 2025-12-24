@@ -28,7 +28,7 @@ export const ItemsInfo = ({ items, total }: ItemsInfoProps) => {
               </div>
 
               {/* TOTAL (mobile) */}
-              <div className="row-span-2 flex items-center justify-end text-primary transition-colors duration-300 md:hidden">
+              <div className="heading-s-variant row-span-2 flex items-center justify-end text-primary transition-colors duration-300 md:hidden">
                 <span>£ {item.total}</span>
               </div>
 

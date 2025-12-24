@@ -13,6 +13,8 @@ import {
   InvoiceEmpty,
 } from "@/features/invoices/components/lists";
 import { Spinner } from "@/components/common/spinner";
+import { ErrorBoundary } from "@/components/common/errorBoundary";
+import { ErrorDisplay } from "@/components/ui/errorDisplay";
 
 const InvoicesRoute = () => {
   const dispatch = useAppDispatch();
@@ -25,22 +27,23 @@ const InvoicesRoute = () => {
     // eslint-disable-next-line
   }, []);
 
-  const showSpinner = status === "loading" && activeFilters.length === 0;
-  const showList = activeFilters.length > 0 && status !== "error";
-  const showEmpty = status === "success" && activeFilters.length === 0;
-
   return (
     <div className="container mx-auto py-8 md:py-14 lg:py-20">
       <InvoiceHeader />
-      {showSpinner && <Spinner />}
 
-      {showList && <InvoiceList />}
+      {status === "loading" && activeFilters.length === 0 && <Spinner />}
 
-      {showEmpty && (
+      <ErrorBoundary>
+        {activeFilters.length > 0 && status !== "error" && <InvoiceList />}
+      </ErrorBoundary>
+
+      {status === "success" && activeFilters.length === 0 && (
         <div className="flex min-h-[60vh] items-center justify-center px-4 py-8 sm:min-h-[50vh] lg:sm:min-h-[60vh]">
           <InvoiceEmpty />
         </div>
       )}
+
+      {status === "error" && <ErrorDisplay />}
     </div>
   );
 };

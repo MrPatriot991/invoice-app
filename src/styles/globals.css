@@ -17,25 +17,9 @@
     font-size: var(--fs-15);
     line-height: var(--lh-15);
     letter-spacing: var(--ls);
-    background-color: var(--bg-main);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: auto;
-
-    *::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    *::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    *::-webkit-scrollbar-thumb {
-      background-color: var(--bg-color-thumb);
-      border-radius: 20px;
-      border: 2px solid transparent;
-    }
-
     @apply bg-main;
   }
 
@@ -47,5 +31,20 @@
   .overflow-scroll {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    *::-webkit-scrollbar {
+      @apply w-2;
+    }
+
+    *::-webkit-scrollbar-track {
+      @apply bg-transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--bg-color-thumb);
+      @apply rounded-full border-2 border-transparent;
+    }
   }
 }

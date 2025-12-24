@@ -13,6 +13,8 @@ import { useModal } from "@/provider/modal/useModal";
 import { GoBackButton } from "@/components/ui/GoBackButton";
 import { InvoiceForm } from "../components/form";
 import { DetailsInvoice } from "@/features/invoices/components/details";
+import { ErrorDisplay } from "@/components/ui/errorDisplay";
+import { ErrorBoundary } from "@/components/common/errorBoundary";
 import { Spinner } from "@/components/common/spinner";
 import {
   DetailsHeader,
@@ -102,26 +104,20 @@ const InvoiceDetailsRoute = () => {
     }
   }, [dispatch, invoiceById, status]);
 
-  if (status === "loading") {
-    return <Spinner />;
-  }
-
-  if (status === "error") {
-    return <p>Failed to load invoice</p>;
-  }
-
-  if (!invoiceById && status === "success") {
-    return <p>Invoice not found</p>;
-  }
-  if (!invoiceById) return null;
-
   // Main render
   return (
     <div className="container mx-auto py-8 md:py-12 lg:py-16">
       <GoBackButton onClick={handleGoBack} />
-      <DetailsHeader buttons={actionButtons} status={invoiceById.status} />
-      <DetailsInvoice invoice={invoiceById} />
-      <DetailsMobileFotter buttons={actionButtons} />
+      {status === "loading" && <Spinner />}
+      {status === "error" && !invoiceById && <ErrorDisplay />}
+
+      {status === "success" && invoiceById && (
+        <ErrorBoundary>
+          <DetailsHeader buttons={actionButtons} status={invoiceById.status} />
+          <DetailsInvoice invoice={invoiceById} />
+          <DetailsMobileFotter buttons={actionButtons} />
+        </ErrorBoundary>
+      )}
     </div>
   );
 };
