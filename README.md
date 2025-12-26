@@ -1,12 +1,14 @@
 # Invoice App
 
+[Live Demo on Vercel](https://invoice-app-mcw5.vercel.app/)
+
 ## Status
 
-⚠️ In progress
+✅ **Stable / MVP (Minimum Viable Product)**
 
-- Invoice list and details pages are fully functional.
-- **New Feature**: Invoice creation and form validation are implemented.
-  Additional features are in development.
+- Frontend and Backend are fully integrated.
+- Core CRUD operations are stable and tested.
+- UI/UX refinements are ongoing.
 
 ## Features Implemented
 
