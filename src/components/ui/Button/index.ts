@@ -1,4 +1,2 @@
-import Button from "./Button";
-import type { ButtonVariant } from "./Button";
-
-export { Button, type ButtonVariant };
+export { default as Button } from "./Button";
+export type { ButtonVariant } from "./Button";
