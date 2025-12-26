@@ -92,9 +92,32 @@
   - Fixed duplicate keys during invoice form initialization
   - Improved draft saving logic
 
-## Quick Start
+### Quick Start
 
-1. `npm install` — install dependencies.
-2. Create `.env` file with `VITE_API_URL=http://localhost:3000`.
-3. `npm run api` — start mock database (Terminal 1).
-4. `npm run dev` — start frontend (Terminal 2).
+1. **Install dependencies:**
+
+   ```bash
+   npm install
+
+   ```
+
+2. **Configure Environment Variables:**
+   Create a .env file in the root directory and add the production API URL:
+   env
+   VITE_API_URL=https://my-invoice-api.onrender.com
+
+3. **Run the Development Server:**
+   npm run dev
+
+4. **Local API (Optional):**
+   If you wish to run the mock database on your own machine:
+   - 1. Run npm run api in a separate terminal.
+   - 2. Ensure your .env is set to localhost:3000.
+
+### Deployment
+
+The application is deployed using a modern CI/CD pipeline:
+
+- **Frontend:** Hosted on **Vercel**, providing fast global delivery and automatic deployments from the GitHub main branch.
+- **Backend:** The REST API is hosted on **Render**.
+  - _Note:_ The API uses a free instance that "spins down" after 15 minutes of inactivity. When you first access the app, please allow 30–50 seconds for the server to "wake up" and fetch the data.
