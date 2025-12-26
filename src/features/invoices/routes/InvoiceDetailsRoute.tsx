@@ -22,7 +22,7 @@ import {
   DeleteInvoiceModal,
 } from "@/features/invoices/components/details";
 
-import type { ButtonVariant } from "@/components/ui/button/Button";
+import type { ButtonVariant } from "@/components/ui/button";
 
 // Type for action buttons used in Header and MobileFooter
 export interface ActionButton {

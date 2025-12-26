@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import { useTheme } from "@/provider/theme/useTheme";
 import { Logo } from "@/components/ui/icons";
-import { MoonIcon } from "@components/ui/icons";
+import { MoonIcon } from "@/components/ui/icons";
 
 import avatarImg from "@/assets/images/image-avatar.jpg";
 
