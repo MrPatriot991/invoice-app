@@ -17,7 +17,9 @@
   - Theme toggle (light/dark) with localStorage support and FOUC prevention
   - Avatar
 - MainLayout component wrapping content
-- Reusable `Button` component with variants
+- Reusable UI components:
+  - Button with explicit TypeScript types
+  - Input with correct forwardRef usage
 - Tailwind configured with custom colors and base styles
 
 ### Routing
@@ -25,17 +27,19 @@
 - React Router setup
 - Invoice list route
 - Invoice details route
+- Local selectors used inside routes instead of prop drilling
 - Scroll to top on route change
 
 ### Invoice Management
 
-- `InvoicesRoute` integrated into the app
-- `InvoiceList` component displaying invoices
-- `InvoiceCard` component with styling and `StatusBadge`
-- Mock invoice data for testing
-- `New Invoice` button in the header
+- Full invoice CRUD flow:
+  - Fetch invoices
+  - Create new invoice
+  - Update existing invoice
+  - Update invoice status (Mark as Paid)
+- Dynamic invoice count displayed in the Header
 - Status filter functionality
-- TypeScript type definitions for invoices
+- Strong TypeScript typings for invoices
 
 ### Invoice Details
 
@@ -47,6 +51,12 @@
 - Mobile footer with action buttons
 - Performant footer visibility handling on scroll
 
+### Error Handling
+
+- Global ErrorBoundary for invoice routes
+- Reusable ErrorDisplay component
+- Graceful UI fallback for runtime errors
+
 ### Modals
 
 - Global modal system using React Context
@@ -55,7 +65,7 @@
 - Support for different modal positions (center / left)
 - Sidebar offset support
 - Invoice deletion confirmation modal
-- Support for "Create Invoice" side-drawer modal.
+- Create/Edit invoice side-drawer modal
 - Body scroll locking (iOS-safe) when modals are active.
 
 ### State Management & Data Fetching
@@ -79,10 +89,12 @@
   - Prevented layout shift on DatePicker toggle using stable scrollbar gutters.
   - Safe body freezing for modals on iOS.
   - Focus management and performance optimization in dynamic lists.
+  - Fixed duplicate keys during invoice form initialization
+  - Improved draft saving logic
 
-## Installation
+## Quick Start
 
-```bash
-npm install
-npm run dev
-```
+1. `npm install` — install dependencies.
+2. Create `.env` file with `VITE_API_URL=http://localhost:3000`.
+3. `npm run api` — start mock database (Terminal 1).
+4. `npm run dev` — start frontend (Terminal 2).
