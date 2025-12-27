@@ -2,6 +2,15 @@
 
 [Live Demo on Vercel](https://invoice-app-mcw5.vercel.app/)
 
+## 🛠 Tech Stack
+
+- **Core:** React (Hooks, Context API), TypeScript, Vite
+- **Routing:** React Router 7
+- **State Management:** Redux Toolkit (createAsyncThunk for async logic)
+- **Forms & Validation:** React Hook Form + Zod
+- **Styling:** Tailwind CSS
+- **Infrastructure:** Vite, Vercel (Frontend), Render (Backend/JSON Server)
+
 ## Status
 
 ✅ **Stable / MVP (Minimum Viable Product)**
